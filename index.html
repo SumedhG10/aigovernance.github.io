@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise AI Governance Dashboard 2025</title>
+    <title>Data & AI Governance Dashboard 2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -18,269 +18,527 @@
         .frameworks-gradient { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
         .tools-gradient { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
         .contact-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .tab-active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .tab-inactive { background: white; color: #667eea; border: 2px solid #667eea; }
+        .data-principles-gradient { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .data-guidelines-gradient { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+        .data-frameworks-gradient { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .data-tools-gradient { background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
     <!-- Header -->
     <header class="gradient-bg text-white py-12">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Enterprise AI Governance 2025</h1>
-            <p class="text-lg opacity-90">Navigate the future of Responsible AI implementation</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Data & AI Governance</h1>
+            <p class="text-xl md:text-2xl font-light mb-2">Comprehensive Learning Dashboard 2025</p>
+            <p class="text-lg opacity-90">Master the future of Responsible data and AI Governance</p>
         </div>
     </header>
 
-    <!-- Main Dashboard -->
-    <main class="container mx-auto px-6 py-12">
-        <!-- Principles Section -->
-        <section class="mb-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">AI Governance Principles</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Fundamental principles that guide ethical and responsible AI development and deployment in enterprise environments.</p>
+    <!-- Tab Navigation -->
+    <div class="container mx-auto px-6 py-8">
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+            <button id="ai-tab" onclick="switchTab('ai')" class="tab-active px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg">
+                🤖 Enterprise AI Governance
+            </button>
+            <button id="data-tab" onclick="switchTab('data')" class="tab-inactive px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg">
+                📊 Data Governance
+            </button>
+        </div>
+    </div>
+
+    <!-- AI Governance Content -->
+    <div id="ai-content" class="tab-content">
+        <main class="container mx-auto px-6 pb-12">
+            <!-- AI Principles Section -->
+            <section class="mb-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">AI Governance Principles</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Fundamental principles that guide ethical and responsible AI development and deployment in enterprise environments.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-blue-500" onclick="openModal('transparency')">
+                        <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🔍</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Transparency</h3>
+                        <p class="text-gray-600">Clear visibility into AI decision-making processes</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-green-500" onclick="openModal('accountability')">
+                        <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">⚖️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Accountability</h3>
+                        <p class="text-gray-600">Clear ownership and responsibility for AI outcomes</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-purple-500" onclick="openModal('fairness')">
+                        <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🤝</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Fairness</h3>
+                        <p class="text-gray-600">Ensuring equitable treatment across all user groups</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-red-500" onclick="openModal('privacy')">
+                        <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🔒</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Privacy</h3>
+                        <p class="text-gray-600">Protecting individual and organizational data rights</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-yellow-500" onclick="openModal('reliability')">
+                        <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🛡️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Reliability</h3>
+                        <p class="text-gray-600">Consistent and dependable AI system performance</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-indigo-500" onclick="openModal('human-oversight')">
+                        <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">👥</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Human Oversight</h3>
+                        <p class="text-gray-600">Maintaining meaningful human control over AI systems</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Guidelines Section -->
+            <section class="mb-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Implementation Guidelines</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Practical guidelines for implementing AI governance across different organizational functions and processes.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-emerald-500" onclick="openModal('risk-assessment')">
+                        <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📊</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Risk Assessment</h3>
+                        <p class="text-gray-600">Systematic evaluation of AI-related risks</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-teal-500" onclick="openModal('data-governance')">
+                        <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">💾</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Governance</h3>
+                        <p class="text-gray-600">Managing data quality, lineage, and compliance</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-cyan-500" onclick="openModal('model-lifecycle')">
+                        <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🔄</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Model Lifecycle</h3>
+                        <p class="text-gray-600">End-to-end management of AI model development</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-lime-500" onclick="openModal('compliance-monitoring')">
+                        <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📋</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Compliance Monitoring</h3>
+                        <p class="text-gray-600">Continuous oversight of regulatory adherence</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-green-600" onclick="openModal('stakeholder-engagement')">
+                        <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🤝</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Stakeholder Engagement</h3>
+                        <p class="text-gray-600">Involving all relevant parties in AI governance</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-emerald-600" onclick="openModal('incident-response')">
+                        <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🚨</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Incident Response</h3>
+                        <p class="text-gray-600">Structured approach to handling AI failures</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Frameworks Section -->
+            <section class="mb-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Governance Frameworks</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Established frameworks and standards that provide structure for enterprise AI governance implementation.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-pink-500" onclick="openModal('nist-framework')">
+                        <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🏛️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">NIST AI Framework</h3>
+                        <p class="text-gray-600">National Institute of Standards comprehensive approach</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-rose-500" onclick="openModal('iso-standards')">
+                        <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📜</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">ISO/IEC Standards</h3>
+                        <p class="text-gray-600">International standards for AI governance</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-orange-500" onclick="openModal('eu-ai-act')">
+                        <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🇪🇺</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">EU AI Act</h3>
+                        <p class="text-gray-600">European Union's comprehensive AI regulation</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-amber-500" onclick="openModal('responsible-ai')">
+                        <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🌟</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Responsible AI</h3>
+                        <p class="text-gray-600">Industry best practices for ethical AI development</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-yellow-600" onclick="openModal('cobit-framework')">
+                        <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">⚙️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">COBIT for AI</h3>
+                        <p class="text-gray-600">IT governance framework adapted for AI systems</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-orange-600" onclick="openModal('industry-specific')">
+                        <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🏢</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Industry-Specific</h3>
+                        <p class="text-gray-600">Sector-tailored governance approaches</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Tools Section -->
+            <section class="mb-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Governance Tools</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Essential tools and technologies that support the implementation and monitoring of AI governance practices.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-sky-500" onclick="openModal('model-registry')">
+                        <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📚</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Model Registry</h3>
+                        <p class="text-gray-600">Centralized repository for AI model management</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-blue-400" onclick="openModal('monitoring-platforms')">
+                        <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📈</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Monitoring Platforms</h3>
+                        <p class="text-gray-600">Real-time AI system performance tracking</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-indigo-400" onclick="openModal('audit-tools')">
+                        <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🔍</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Audit Tools</h3>
+                        <p class="text-gray-600">Comprehensive AI system auditing capabilities</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-purple-400" onclick="openModal('bias-detection')">
+                        <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">⚖️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bias Detection</h3>
+                        <p class="text-gray-600">Tools for identifying and mitigating AI bias</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-violet-400" onclick="openModal('explainability-tools')">
+                        <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">💡</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Explainability Tools</h3>
+                        <p class="text-gray-600">Making AI decisions interpretable and transparent</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-fuchsia-400" onclick="openModal('documentation-systems')">
+                        <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📝</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Documentation Systems</h3>
+                        <p class="text-gray-600">Automated governance documentation and reporting</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Data Governance Content -->
+    <div id="data-content" class="tab-content hidden">
+        <main class="container mx-auto px-6 pb-12">
+            <!-- Data Principles Section -->
+            <section class="mb-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Data Governance Principles</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Core principles that establish the foundation for effective data management and governance across the enterprise.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-pink-500" onclick="openModal('data-quality')">
+                        <div class="data-principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">✨</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Quality</h3>
+                        <p class="text-gray-600">Ensuring accuracy, completeness, and reliability of data</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-rose-500" onclick="openModal('data-stewardship')">
+                        <div class="data-principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">👨‍💼</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Stewardship</h3>
+                        <p class="text-gray-600">Clear ownership and responsibility for data assets</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-red-400" onclick="openModal('data-security')">
+                        <div class="data-principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🔐</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Security</h3>
+                        <p class="text-gray-600">Protecting data from unauthorized access and breaches</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-orange-400" onclick="openModal('data-accessibility')">
+                        <div class="data-principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🌐</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Accessibility</h3>
+                        <p class="text-gray-600">Making data available to authorized users when needed</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-amber-400" onclick="openModal('data-lineage')">
+                        <div class="data-principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🔗</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Lineage</h3>
+                        <p class="text-gray-600">Tracking data flow and transformation across systems</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-yellow-400" onclick="openModal('data-retention')">
+                        <div class="data-principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📅</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Retention</h3>
+                        <p class="text-gray-600">Managing data lifecycle and retention policies</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Guidelines Section -->
+            <section class="mb-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Implementation Guidelines</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Practical guidelines for implementing comprehensive data governance across organizational functions and processes.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-purple-500" onclick="openModal('data-classification')">
+                        <div class="data-guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🏷️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Classification</h3>
+                        <p class="text-gray-600">Categorizing data based on sensitivity and value</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-violet-500" onclick="openModal('data-catalog')">
+                        <div class="data-guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📖</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Catalog</h3>
+                        <p class="text-gray-600">Comprehensive inventory of organizational data assets</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-indigo-500" onclick="openModal('data-policies')">
+                        <div class="data-guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📋</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Policies</h3>
+                        <p class="text-gray-600">Establishing rules and standards for data usage</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-blue-500" onclick="openModal('data-architecture')">
+                        <div class="data-guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🏗️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Architecture</h3>
+                        <p class="text-gray-600">Designing scalable and efficient data infrastructure</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-cyan-500" onclick="openModal('data-integration')">
+                        <div class="data-guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🔄</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Integration</h3>
+                        <p class="text-gray-600">Connecting and harmonizing data across systems</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-teal-500" onclick="openModal('data-privacy-compliance')">
+                        <div class="data-guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🛡️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Privacy Compliance</h3>
+                        <p class="text-gray-600">Ensuring adherence to data protection regulations</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Frameworks Section -->
+            <section class="mb-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Data Governance Frameworks</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Established frameworks and methodologies that provide structure for enterprise data governance implementation.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-orange-500" onclick="openModal('dama-dmbok')">
+                        <div class="data-frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📚</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">DAMA-DMBOK</h3>
+                        <p class="text-gray-600">Data Management Body of Knowledge framework</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-amber-500" onclick="openModal('dcam-framework')">
+                        <div class="data-frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📊</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">DCAM Framework</h3>
+                        <p class="text-gray-600">Data Capability Assessment Model</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-yellow-500" onclick="openModal('cobit-data')">
+                        <div class="data-frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">⚙️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">COBIT for Data</h3>
+                        <p class="text-gray-600">IT governance framework for data management</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-lime-500" onclick="openModal('iso-data-standards')">
+                        <div class="data-frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📜</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">ISO Data Standards</h3>
+                        <p class="text-gray-600">International standards for data management</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-green-500" onclick="openModal('gdpr-framework')">
+                        <div class="data-frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🇪🇺</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">GDPR Framework</h3>
+                        <p class="text-gray-600">European data protection regulation compliance</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-emerald-500" onclick="openModal('data-mesh')">
+                        <div class="data-frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🕸️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Mesh</h3>
+                        <p class="text-gray-600">Decentralized data architecture approach</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Tools Section -->
+            <section class="mb-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Data Governance Tools</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Essential tools and platforms that enable effective data governance implementation and monitoring.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-pink-400" onclick="openModal('data-catalog-tools')">
+                        <div class="data-tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">📚</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Catalog Tools</h3>
+                        <p class="text-gray-600">Automated data discovery and cataloging platforms</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-rose-400" onclick="openModal('data-quality-tools')">
+                        <div class="data-tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🔍</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Quality Tools</h3>
+                        <p class="text-gray-600">Monitoring and improving data quality metrics</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-red-300" onclick="openModal('data-lineage-tools')">
+                        <div class="data-tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🔗</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Lineage Tools</h3>
+                        <p class="text-gray-600">Tracking data flow and transformation paths</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-orange-300" onclick="openModal('data-masking-tools')">
+                        <div class="data-tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🎭</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Masking Tools</h3>
+                        <p class="text-gray-600">Protecting sensitive data through anonymization</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-amber-300" onclick="openModal('mdm-tools')">
+                        <div class="data-tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🎯</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">MDM Tools</h3>
+                        <p class="text-gray-600">Master Data Management platforms</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-yellow-300" onclick="openModal('data-governance-platforms')">
+                        <div class="data-tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-white text-xl">🏛️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Governance Platforms</h3>
+                        <p class="text-gray-600">Comprehensive data governance suites</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Contact Card -->
+    <section class="container mx-auto px-6 mb-8">
+        <div class="max-w-2xl mx-auto">
+            <div class="contact-gradient rounded-2xl shadow-2xl p-8 text-white text-center">
+                <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="text-3xl">👨‍💼</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Data & AI Governance Consultant</h3>
+                <p class="text-lg opacity-90 mb-6">Ready to transform your organization with comprehensive data and AI governance?</p>
+                <button onclick="window.location.href='mailto:sumedhghatage10@gmail.com?subject=Data & AI Governance Consultation Inquiry'" 
+                        class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 shadow-lg">
+                    Connect with Me
+                </button>
+                <p class="text-sm opacity-75 mt-4">sumedhghatage10@gmail.com</p>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-blue-500" onclick="openModal('transparency')">
-                    <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">🔍</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Transparency</h3>
-                    <p class="text-gray-600">Clear visibility into AI decision-making processes</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-green-500" onclick="openModal('accountability')">
-                    <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">⚖️</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Accountability</h3>
-                    <p class="text-gray-600">Clear ownership and responsibility for AI outcomes</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-purple-500" onclick="openModal('fairness')">
-                    <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">🤝</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Fairness</h3>
-                    <p class="text-gray-600">Ensuring equitable treatment across all user groups</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-red-500" onclick="openModal('privacy')">
-                    <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">🔒</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Privacy</h3>
-                    <p class="text-gray-600">Protecting individual and organizational data rights</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-yellow-500" onclick="openModal('reliability')">
-                    <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">🛡️</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Reliability</h3>
-                    <p class="text-gray-600">Consistent and dependable AI system performance</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-indigo-500" onclick="openModal('human-oversight')">
-                    <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">👥</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Human Oversight</h3>
-                    <p class="text-gray-600">Maintaining meaningful human control over AI systems</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Guidelines Section -->
-        <section class="mb-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Implementation Guidelines</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Practical guidelines for implementing AI governance across different organizational functions and processes.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-emerald-500" onclick="openModal('risk-assessment')">
-                    <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">📊</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Risk Assessment</h3>
-                    <p class="text-gray-600">Systematic evaluation of AI-related risks</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-teal-500" onclick="openModal('data-governance')">
-                    <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">💾</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Governance</h3>
-                    <p class="text-gray-600">Managing data quality, lineage, and compliance</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-cyan-500" onclick="openModal('model-lifecycle')">
-                    <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">🔄</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Model Lifecycle</h3>
-                    <p class="text-gray-600">End-to-end management of AI model development</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-lime-500" onclick="openModal('compliance-monitoring')">
-                    <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">📋</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Compliance Monitoring</h3>
-                    <p class="text-gray-600">Continuous oversight of regulatory adherence</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-green-600" onclick="openModal('stakeholder-engagement')">
-                    <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">🤝</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Stakeholder Engagement</h3>
-                    <p class="text-gray-600">Involving all relevant parties in AI governance</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-emerald-600" onclick="openModal('incident-response')">
-                    <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">🚨</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Incident Response</h3>
-                    <p class="text-gray-600">Structured approach to handling AI failures</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Frameworks Section -->
-        <section class="mb-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Governance Frameworks</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Established frameworks and standards that provide structure for enterprise AI governance implementation.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-pink-500" onclick="openModal('nist-framework')">
-                    <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">🏛️</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">NIST AI Framework</h3>
-                    <p class="text-gray-600">National Institute of Standards comprehensive approach</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-rose-500" onclick="openModal('iso-standards')">
-                    <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">📜</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ISO/IEC Standards</h3>
-                    <p class="text-gray-600">International standards for AI governance</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-orange-500" onclick="openModal('eu-ai-act')">
-                    <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">🇪🇺</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">EU AI Act</h3>
-                    <p class="text-gray-600">European Union's comprehensive AI regulation</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-amber-500" onclick="openModal('responsible-ai')">
-                    <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">🌟</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Responsible AI</h3>
-                    <p class="text-gray-600">Industry best practices for ethical AI development</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-yellow-600" onclick="openModal('cobit-framework')">
-                    <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">⚙️</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">COBIT for AI</h3>
-                    <p class="text-gray-600">IT governance framework adapted for AI systems</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-orange-600" onclick="openModal('industry-specific')">
-                    <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">🏢</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Industry-Specific</h3>
-                    <p class="text-gray-600">Sector-tailored governance approaches</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tools Section -->
-        <section class="mb-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Governance Tools</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Essential tools and technologies that support the implementation and monitoring of AI governance practices.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-sky-500" onclick="openModal('model-registry')">
-                    <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">📚</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Model Registry</h3>
-                    <p class="text-gray-600">Centralized repository for AI model management</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-blue-400" onclick="openModal('monitoring-platforms')">
-                    <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">📈</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Monitoring Platforms</h3>
-                    <p class="text-gray-600">Real-time AI system performance tracking</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-indigo-400" onclick="openModal('audit-tools')">
-                    <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">🔍</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Audit Tools</h3>
-                    <p class="text-gray-600">Comprehensive AI system auditing capabilities</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-purple-400" onclick="openModal('bias-detection')">
-                    <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">⚖️</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Bias Detection</h3>
-                    <p class="text-gray-600">Tools for identifying and mitigating AI bias</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-violet-400" onclick="openModal('explainability-tools')">
-                    <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">💡</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Explainability Tools</h3>
-                    <p class="text-gray-600">Making AI decisions interpretable and transparent</p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-fuchsia-400" onclick="openModal('documentation-systems')">
-                    <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                        <span class="text-white text-xl">📝</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Documentation Systems</h3>
-                    <p class="text-gray-600">Automated governance documentation and reporting</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Card -->
-        <section class="mb-8">
-            <div class="max-w-2xl mx-auto">
-                <div class="contact-gradient rounded-2xl shadow-2xl p-8 text-white text-center">
-                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-3xl">👨‍💼</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">AI Governance Consultant</h3>
-                    <p class="text-lg opacity-90 mb-6">Ready to implement enterprise AI governance in your organization?</p>
-                    <button onclick="window.location.href='mailto:sumedhghatage10@gmail.com?subject=AI Governance Consultation Inquiry'" 
-                            class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 shadow-lg">
-                        Connect with Me
-                    </button>
-                    <p class="text-sm opacity-75 mt-4">sumedhghatage10@gmail.com</p>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Modal -->
     <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 modal hidden items-center justify-center z-50 p-4">
@@ -296,7 +554,28 @@
     </div>
 
     <script>
+        // Tab switching functionality
+        function switchTab(tab) {
+            const aiTab = document.getElementById('ai-tab');
+            const dataTab = document.getElementById('data-tab');
+            const aiContent = document.getElementById('ai-content');
+            const dataContent = document.getElementById('data-content');
+
+            if (tab === 'ai') {
+                aiTab.className = 'tab-active px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg';
+                dataTab.className = 'tab-inactive px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg';
+                aiContent.classList.remove('hidden');
+                dataContent.classList.add('hidden');
+            } else {
+                dataTab.className = 'tab-active px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg';
+                aiTab.className = 'tab-inactive px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg';
+                dataContent.classList.remove('hidden');
+                aiContent.classList.add('hidden');
+            }
+        }
+
         const modalContent = {
+            // AI Governance Content (existing)
             'transparency': {
                 title: 'Transparency in AI Systems',
                 content: `Transparency in AI governance ensures that stakeholders can understand how AI systems make decisions and operate. This principle requires organizations to provide clear documentation about AI model architecture, training data sources, decision-making processes, and potential limitations. Transparency builds trust with users, regulators, and internal teams by making AI systems more interpretable and accountable. It involves creating audit trails, maintaining comprehensive documentation, and providing explanations for AI-driven decisions in language that non-technical stakeholders can understand. Organizations must balance transparency with intellectual property protection and competitive advantages while ensuring sufficient visibility into AI operations.`
@@ -392,6 +671,104 @@
             'documentation-systems': {
                 title: 'AI Documentation and Reporting Systems',
                 content: `AI documentation systems automate the creation, maintenance, and distribution of governance documentation required for AI system compliance, audit, and stakeholder communication. These systems generate comprehensive documentation including model cards, data sheets, risk assessments, and compliance reports that provide stakeholders with essential information about AI system capabilities, limitations, and governance status. Documentation systems support governance by ensuring consistent, up-to-date documentation that meets regulatory requirements and organizational standards. They integrate with development and deployment pipelines to automatically capture technical metadata, performance metrics, and governance artifacts throughout the AI lifecycle. Advanced documentation systems provide templating capabilities, workflow management, and approval processes that ensure documentation quality and completeness. These systems also support stakeholder communication by generating customized reports and dashboards for different audiences, from technical teams to executive leadership and regulatory bodies. Effective documentation system implementation requires establishing clear documentation standards, automated data collection processes, and regular review procedures that ensure documentation remains accurate and useful for governance decision-making.`
+            },
+
+            // Data Governance Content (new)
+            'data-quality': {
+                title: 'Data Quality Management',
+                content: `Data quality management ensures that organizational data meets defined standards for accuracy, completeness, consistency, timeliness, validity, and uniqueness. This principle requires establishing comprehensive data quality frameworks that define quality dimensions, measurement criteria, and acceptable quality thresholds for different data types and use cases. Organizations must implement automated data quality monitoring systems that continuously assess data against established standards and provide real-time alerts when quality issues are detected. Data quality management involves creating data profiling processes, implementing data validation rules, and establishing data cleansing procedures that maintain high-quality data throughout its lifecycle. This principle also requires defining roles and responsibilities for data quality, including data stewards who are accountable for maintaining quality standards within their domains. Effective data quality management enables better decision-making, reduces operational risks, and ensures that data-driven initiatives deliver reliable and trustworthy results.`
+            },
+            'data-stewardship': {
+                title: 'Data Stewardship and Ownership',
+                content: `Data stewardship establishes clear ownership and accountability for data assets throughout the organization, ensuring that designated individuals or teams are responsible for data quality, security, and compliance. This principle requires defining data steward roles and responsibilities, including data owners who have business accountability for data assets and data custodians who manage technical aspects of data storage and processing. Data stewardship involves creating governance structures that enable effective decision-making about data usage, access rights, and quality standards. Stewards must understand the business context and value of their data assets, maintain data documentation and metadata, and ensure compliance with relevant policies and regulations. This principle also requires establishing clear escalation paths for data-related issues and creating mechanisms for resolving conflicts between different data stakeholders. Effective data stewardship ensures that data assets are properly managed, protected, and leveraged to create business value while maintaining appropriate controls and compliance.`
+            },
+            'data-security': {
+                title: 'Data Security and Protection',
+                content: `Data security protects organizational data assets from unauthorized access, modification, disclosure, or destruction throughout the data lifecycle. This principle requires implementing comprehensive security controls including access management, encryption, network security, and monitoring systems that protect data at rest, in transit, and in use. Data security involves establishing role-based access controls that ensure users have appropriate permissions based on their job responsibilities and business needs. Organizations must implement data classification schemes that identify sensitive data and apply appropriate security controls based on data sensitivity levels. This principle also requires regular security assessments, vulnerability testing, and incident response procedures that enable rapid detection and response to security threats. Data security must be integrated into all data management processes, from data collection and storage to processing and sharing. Effective data security implementation balances protection requirements with business needs, ensuring that security controls enable rather than hinder legitimate data usage while maintaining strong protection against threats.`
+            },
+            'data-accessibility': {
+                title: 'Data Accessibility and Availability',
+                content: `Data accessibility ensures that authorized users can easily discover, access, and use data assets when needed for business purposes. This principle requires implementing data discovery mechanisms, self-service analytics capabilities, and user-friendly interfaces that enable business users to find and access relevant data without extensive technical expertise. Data accessibility involves creating comprehensive data catalogs that provide searchable inventories of available data assets, including metadata, lineage information, and usage guidelines. Organizations must establish clear data access policies and procedures that balance accessibility with security and compliance requirements. This principle also requires implementing appropriate infrastructure and tools that support efficient data retrieval and analysis across different user communities and use cases. Data accessibility must consider different user needs and technical capabilities, providing appropriate interfaces and tools for both technical and business users. Effective data accessibility implementation enables data democratization while maintaining appropriate governance controls and ensuring that users can trust the data they access.`
+            },
+            'data-lineage': {
+                title: 'Data Lineage and Traceability',
+                content: `Data lineage provides comprehensive tracking of data flow and transformation throughout the organization, enabling users to understand data origins, processing steps, and dependencies. This principle requires implementing automated lineage tracking systems that capture data movement and transformation across different systems, applications, and processes. Data lineage involves documenting data sources, transformation logic, data quality rules, and downstream usage to provide complete visibility into data journeys. Organizations must maintain both technical lineage that shows system-level data flows and business lineage that explains data meaning and business context. This principle also requires establishing processes for maintaining lineage accuracy as systems and processes change over time. Data lineage supports impact analysis, enabling organizations to understand the effects of changes to data sources or processing logic on downstream systems and users. Effective data lineage implementation enables better data governance, supports regulatory compliance, and facilitates troubleshooting and root cause analysis when data issues occur.`
+            },
+            'data-retention': {
+                title: 'Data Retention and Lifecycle Management',
+                content: `Data retention management establishes policies and procedures for managing data throughout its lifecycle, from creation to disposal, ensuring compliance with legal requirements and business needs. This principle requires defining retention schedules that specify how long different types of data should be retained based on regulatory requirements, business value, and storage costs. Data retention involves implementing automated processes for data archiving, deletion, and disposal that ensure data is retained for appropriate periods and securely destroyed when no longer needed. Organizations must consider legal hold requirements, litigation needs, and regulatory obligations when establishing retention policies. This principle also requires regular review and updates of retention policies to reflect changing business needs and regulatory requirements. Data retention management must balance compliance requirements with storage costs and system performance, implementing tiered storage strategies that optimize costs while maintaining accessibility for active data. Effective data retention implementation reduces legal and compliance risks, optimizes storage costs, and ensures that valuable data is preserved while unnecessary data is appropriately disposed of.`
+            },
+            'data-classification': {
+                title: 'Data Classification and Categorization',
+                content: `Data classification systematically categorizes data assets based on their sensitivity, value, and regulatory requirements, enabling appropriate protection and governance controls. This principle requires establishing comprehensive classification schemes that consider data sensitivity levels, business criticality, regulatory requirements, and privacy implications. Data classification involves implementing automated classification tools that can identify and tag data based on content, context, and usage patterns. Organizations must define clear classification criteria and ensure consistent application across all data assets and systems. This principle also requires establishing handling procedures for each classification level, including access controls, encryption requirements, and sharing restrictions. Data classification must be integrated into data governance processes, ensuring that classification information is maintained and updated as data changes over time. Effective data classification enables risk-based data protection, supports compliance with privacy regulations, and helps organizations focus governance efforts on their most critical and sensitive data assets.`
+            },
+            'data-catalog': {
+                title: 'Data Catalog and Inventory Management',
+                content: `Data catalog management creates comprehensive, searchable inventories of organizational data assets that enable users to discover, understand, and access relevant data for their business needs. This principle requires implementing automated data discovery tools that can scan systems and applications to identify and catalog data assets. Data catalogs must include rich metadata that describes data content, structure, quality, lineage, and usage guidelines. Organizations must establish processes for maintaining catalog accuracy and completeness as new data sources are added and existing sources change. This principle also requires implementing user-friendly search and browsing capabilities that enable both technical and business users to find relevant data assets. Data catalogs should integrate with other governance tools to provide comprehensive views of data assets, including quality metrics, access controls, and compliance status. Effective data catalog implementation enables data democratization, reduces time spent searching for data, and improves data reuse across the organization while maintaining appropriate governance oversight.`
+            },
+            'data-policies': {
+                title: 'Data Policies and Standards',
+                content: `Data policies establish comprehensive rules, standards, and guidelines that govern how data is collected, stored, processed, shared, and disposed of throughout the organization. This principle requires developing clear, actionable policies that address data governance, privacy, security, quality, and compliance requirements. Data policies must be aligned with business objectives, regulatory requirements, and industry best practices while being practical and enforceable. Organizations must establish processes for policy development, review, approval, and communication that ensure policies remain current and relevant. This principle also requires implementing monitoring and enforcement mechanisms that ensure policy compliance and provide feedback on policy effectiveness. Data policies should be supported by detailed procedures, guidelines, and training materials that help users understand and comply with policy requirements. Effective data policy implementation provides clear guidance for data-related decisions, reduces compliance risks, and ensures consistent data handling practices across the organization.`
+            },
+            'data-architecture': {
+                title: 'Data Architecture and Design',
+                content: `Data architecture provides the blueprint for organizing, storing, and accessing data assets in ways that support business requirements while enabling scalability, performance, and governance. This principle requires designing data architectures that consider current and future business needs, technology capabilities, and governance requirements. Data architecture involves defining data models, storage strategies, integration patterns, and access mechanisms that optimize data usage while maintaining appropriate controls. Organizations must establish architectural standards and guidelines that ensure consistency and interoperability across different systems and applications. This principle also requires considering emerging technologies and architectural patterns such as data lakes, data mesh, and cloud-native architectures that can improve data accessibility and scalability. Data architecture must be aligned with enterprise architecture and technology strategies while supporting data governance objectives. Effective data architecture implementation enables efficient data processing, supports business agility, and provides the foundation for advanced analytics and AI initiatives.`
+            },
+            'data-integration': {
+                title: 'Data Integration and Interoperability',
+                content: `Data integration connects and harmonizes data from multiple sources to provide unified, consistent views of information that support business processes and decision-making. This principle requires implementing integration architectures and tools that can efficiently move, transform, and synchronize data across different systems and formats. Data integration involves establishing data mapping and transformation rules that ensure data consistency and quality during integration processes. Organizations must implement master data management practices that create authoritative sources of key business entities and maintain data consistency across systems. This principle also requires establishing data sharing standards and APIs that enable secure, controlled access to integrated data. Data integration must consider real-time and batch processing requirements, implementing appropriate technologies and patterns for different use cases. Effective data integration implementation reduces data silos, improves data consistency, and enables comprehensive analytics and reporting capabilities that provide complete views of business operations.`
+            },
+            'data-privacy-compliance': {
+                title: 'Data Privacy and Regulatory Compliance',
+                content: `Data privacy compliance ensures that organizational data practices adhere to applicable privacy regulations such as GDPR, CCPA, and other data protection laws while respecting individual privacy rights. This principle requires implementing comprehensive privacy programs that address data collection, processing, storage, and sharing practices. Privacy compliance involves conducting privacy impact assessments, implementing privacy-by-design principles, and establishing consent management processes that respect individual preferences. Organizations must implement data subject rights management systems that enable individuals to access, correct, delete, or port their personal data as required by regulations. This principle also requires establishing breach notification procedures, privacy training programs, and ongoing compliance monitoring systems. Privacy compliance must be integrated into all data governance processes, ensuring that privacy considerations are addressed throughout the data lifecycle. Effective privacy compliance implementation reduces regulatory risks, builds customer trust, and demonstrates organizational commitment to responsible data stewardship.`
+            },
+            'dama-dmbok': {
+                title: 'DAMA-DMBOK Framework',
+                content: `The DAMA Data Management Body of Knowledge (DMBOK) provides a comprehensive framework for data management that covers all aspects of data governance, architecture, quality, security, and lifecycle management. This framework establishes eleven knowledge areas including data governance, data architecture, data modeling, data storage, data security, data integration, document and content management, reference and master data, data warehousing, metadata management, and data quality. DAMA-DMBOK provides detailed guidance on data management functions, activities, deliverables, roles, and responsibilities that enable organizations to establish mature data management capabilities. The framework emphasizes the importance of data governance as the overarching discipline that coordinates all other data management activities. Organizations can use DAMA-DMBOK to assess their current data management maturity, identify improvement opportunities, and establish comprehensive data management programs. The framework provides a common language and set of best practices that enable consistent data management implementation across different organizations and industries.`
+            },
+            'dcam-framework': {
+                title: 'Data Capability Assessment Model (DCAM)',
+                content: `The Data Capability Assessment Model (DCAM) provides a comprehensive framework for assessing and improving organizational data management capabilities across six key components: data strategy, data governance, data quality, data operations, data architecture, and supporting technology. DCAM enables organizations to evaluate their current data management maturity and identify specific areas for improvement through detailed assessment criteria and maturity levels. The framework provides structured approaches for developing data strategies that align with business objectives, implementing governance structures that ensure effective data oversight, and establishing operational processes that maintain data quality and accessibility. DCAM also addresses technology considerations, helping organizations select and implement appropriate tools and platforms that support their data management objectives. Organizations can use DCAM to benchmark their capabilities against industry best practices, prioritize improvement initiatives, and track progress over time. The framework supports both self-assessment and third-party evaluation, providing flexibility for different organizational needs and contexts.`
+            },
+            'cobit-data': {
+                title: 'COBIT Framework for Data Management',
+                content: `COBIT (Control Objectives for Information and Related Technologies) provides a comprehensive governance framework that has been adapted to address data management and governance challenges. The COBIT framework for data establishes governance and management objectives that help organizations align data initiatives with business strategy, manage data-related risks, and optimize data resource utilization. This framework provides detailed guidance on establishing data governance structures, defining roles and responsibilities, and implementing control mechanisms for data assets. COBIT for data addresses key governance domains including strategic alignment, value delivery, risk management, resource management, and performance measurement specifically for data assets. The framework includes specific practices for data lifecycle management, data quality assurance, and compliance monitoring. Organizations can use COBIT to establish mature data governance capabilities, assess their current governance maturity, and identify improvement opportunities. The framework provides metrics and assessment tools that enable organizations to measure and improve their data governance effectiveness over time.`
+            },
+            'iso-data-standards': {
+                title: 'ISO Data Management Standards',
+                content: `ISO data management standards provide internationally recognized guidelines and requirements for data governance, quality, security, and management practices. Key ISO standards for data management include ISO/IEC 38500 for IT governance, ISO 27001 for information security management, ISO 8000 for data quality, and ISO/IEC 20546 for big data reference architecture. These standards establish common terminology, principles, and practices for data management that enable consistent implementation across organizations and jurisdictions. ISO standards provide detailed requirements for data management processes, documentation, monitoring, and continuous improvement that support regulatory compliance and stakeholder confidence. The standards also address specific aspects of data management such as data quality measurement, metadata management, and data lifecycle processes. Organizations can use ISO standards to establish credible data management programs, demonstrate compliance with international best practices, and facilitate interoperability with partners and customers. The standards are regularly updated to reflect evolving data technologies and management practices, providing organizations with current guidance for data management implementation.`
+            },
+            'gdpr-framework': {
+                title: 'GDPR Compliance Framework',
+                content: `The General Data Protection Regulation (GDPR) framework establishes comprehensive requirements for protecting personal data and privacy rights within the European Union and for organizations processing EU residents' data. This framework requires organizations to implement privacy-by-design principles, conduct data protection impact assessments, and establish lawful bases for data processing activities. GDPR compliance involves implementing technical and organizational measures that ensure data security, establishing procedures for handling data subject rights requests, and maintaining detailed records of processing activities. Organizations must appoint data protection officers where required, implement breach notification procedures, and establish mechanisms for demonstrating compliance with GDPR requirements. The framework also requires organizations to implement appropriate safeguards for international data transfers and establish contracts with data processors that ensure GDPR compliance. GDPR compliance extends beyond technical measures to include staff training, policy development, and ongoing monitoring of data processing activities. Effective GDPR implementation reduces regulatory risks, builds customer trust, and establishes strong foundations for responsible data stewardship.`
+            },
+            'data-mesh': {
+                title: 'Data Mesh Architecture',
+                content: `Data mesh represents a decentralized approach to data architecture that treats data as a product and distributes data ownership and governance responsibilities across domain-oriented teams. This framework addresses the limitations of centralized data architectures by enabling domain teams to own and manage their data assets while maintaining interoperability and governance standards. Data mesh involves four key principles: domain-oriented decentralized data ownership, data as a product, self-serve data infrastructure as a platform, and federated computational governance. Organizations implementing data mesh establish domain teams that are responsible for their data products' quality, accessibility, and compliance while providing self-service capabilities for data consumers. The framework requires implementing federated governance that establishes global standards and policies while allowing domain-specific implementation flexibility. Data mesh also emphasizes the importance of treating data as a product, with clear ownership, quality standards, and user experience considerations. Effective data mesh implementation enables organizational scalability, improves data quality and accessibility, and supports faster innovation while maintaining appropriate governance oversight.`
+            },
+            'data-catalog-tools': {
+                title: 'Data Catalog and Discovery Tools',
+                content: `Data catalog tools provide automated discovery, cataloging, and management capabilities for organizational data assets, enabling users to easily find, understand, and access relevant data. These tools scan databases, data lakes, file systems, and applications to automatically discover and catalog data assets, extracting metadata, schema information, and data profiles. Advanced data catalog tools use machine learning to automatically classify data, identify sensitive information, and suggest data relationships and lineage. They provide user-friendly search and browsing interfaces that enable both technical and business users to discover relevant data assets using natural language queries and faceted search capabilities. Data catalog tools integrate with data governance platforms to provide comprehensive views of data assets, including quality metrics, access controls, compliance status, and usage analytics. These tools also support collaborative features such as data asset ratings, reviews, and annotations that help users understand data quality and relevance. Effective data catalog implementation reduces time spent searching for data, improves data reuse, and enables data democratization while maintaining appropriate governance oversight.`
+            },
+            'data-quality-tools': {
+                title: 'Data Quality Management Tools',
+                content: `Data quality tools provide comprehensive capabilities for monitoring, measuring, and improving data quality across organizational data assets. These tools implement automated data profiling that analyzes data to identify quality issues such as missing values, duplicates, inconsistencies, and format violations. Data quality tools provide rule-based validation engines that can apply business rules and quality checks to data in real-time or batch processing modes. They offer data cleansing and standardization capabilities that can automatically correct common data quality issues and transform data to meet quality standards. Advanced data quality tools provide machine learning-based anomaly detection that can identify unusual patterns or outliers that may indicate quality problems. These tools also provide comprehensive reporting and dashboards that enable data stewards and business users to monitor data quality trends and identify areas requiring attention. Data quality tools integrate with data integration and governance platforms to ensure quality checks are applied throughout data processing pipelines. Effective data quality tool implementation improves decision-making, reduces operational risks, and ensures that data-driven initiatives are based on reliable, high-quality data.`
+            },
+            'data-lineage-tools': {
+                title: 'Data Lineage and Impact Analysis Tools',
+                content: `Data lineage tools provide automated tracking and visualization of data flow and transformation throughout organizational systems, enabling users to understand data origins, processing steps, and downstream dependencies. These tools scan databases, ETL processes, applications, and analytics platforms to automatically discover and map data lineage relationships. Data lineage tools provide both technical lineage that shows system-level data flows and business lineage that explains data meaning and business context. They offer interactive visualization capabilities that enable users to explore data lineage through graphical interfaces and understand complex data relationships. Advanced lineage tools provide impact analysis capabilities that help users understand the effects of changes to data sources, transformations, or business rules on downstream systems and reports. These tools also support compliance requirements by providing audit trails and documentation of data processing activities. Data lineage tools integrate with data governance platforms to provide comprehensive views of data assets and their relationships. Effective data lineage implementation enables better data governance, supports regulatory compliance, facilitates troubleshooting, and enables confident data changes and system migrations.`
+            },
+            'data-masking-tools': {
+                title: 'Data Masking and Anonymization Tools',
+                content: `Data masking tools provide capabilities for protecting sensitive data by replacing, encrypting, or scrambling original data values while maintaining data utility for testing, development, and analytics purposes. These tools implement various masking techniques including substitution, shuffling, encryption, and synthetic data generation that protect sensitive information while preserving data relationships and statistical properties. Data masking tools provide policy-based masking that automatically applies appropriate masking techniques based on data classification and sensitivity levels. They support both static masking for data at rest and dynamic masking for data in use, enabling flexible protection strategies for different use cases. Advanced masking tools provide referential integrity preservation that ensures masked data maintains consistent relationships across tables and systems. These tools also provide format-preserving encryption and tokenization capabilities that protect sensitive data while maintaining original data formats and lengths. Data masking tools integrate with data governance platforms to ensure consistent application of masking policies and provide audit trails of masking activities. Effective data masking implementation enables safe use of production data in non-production environments, supports privacy compliance, and reduces the risk of data breaches while maintaining data utility for legitimate business purposes.`
+            },
+            'mdm-tools': {
+                title: 'Master Data Management (MDM) Tools',
+                content: `Master Data Management tools provide comprehensive capabilities for creating, maintaining, and governing authoritative sources of critical business entities such as customers, products, suppliers, and locations. These tools implement data consolidation processes that identify, match, and merge duplicate records from multiple source systems to create single, accurate master records. MDM tools provide data quality and validation capabilities that ensure master data meets defined quality standards and business rules. They offer workflow and approval processes that enable data stewards to review and approve changes to master data before they are propagated to downstream systems. Advanced MDM tools provide real-time data synchronization capabilities that ensure master data changes are immediately reflected across all connected systems. These tools also provide data governance capabilities including data lineage tracking, audit trails, and policy enforcement that ensure master data integrity and compliance. MDM tools support both hub-and-spoke and registry-style architectures, enabling flexible implementation approaches based on organizational needs. Effective MDM implementation improves data consistency, reduces data redundancy, enables better customer experiences, and provides reliable foundations for analytics and reporting initiatives.`
+            },
+            'data-governance-platforms': {
+                title: 'Comprehensive Data Governance Platforms',
+                content: `Data governance platforms provide integrated suites of tools and capabilities that enable organizations to implement comprehensive data governance programs across all aspects of data management. These platforms combine data cataloging, quality management, lineage tracking, policy management, and compliance monitoring in unified environments that provide consistent governance oversight. Data governance platforms provide workflow and collaboration capabilities that enable data stewards, data owners, and business users to work together effectively on data governance activities. They offer policy and rule engines that can automatically enforce governance policies and provide alerts when violations are detected. Advanced governance platforms provide AI and machine learning capabilities that can automatically classify data, identify governance issues, and recommend remediation actions. These platforms also provide comprehensive reporting and analytics capabilities that enable organizations to measure governance effectiveness and demonstrate compliance with regulatory requirements. Data governance platforms integrate with existing data infrastructure including databases, data lakes, analytics platforms, and business applications to provide governance oversight across the entire data ecosystem. Effective governance platform implementation enables scalable data governance, improves compliance posture, and provides the foundation for successful data-driven transformation initiatives.`
             }
         };
 
@@ -430,5 +807,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96fb9d79f14d0fac',t:'MTc1NTI5MTU2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96fbb9c522872982',t:'MTc1NTI5MjcxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
