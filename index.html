@@ -3,1199 +3,432 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise AI Governance 2025 - Interactive Learning Dashboard</title>
+    <title>Enterprise AI Governance Dashboard 2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-        }
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 0;
-            border-radius: 16px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
-            animation: modalSlideIn 0.3s ease;
-        }
-        @keyframes modalSlideIn {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .progress-ring {
-            transform: rotate(-90deg);
-        }
-        .progress-ring-circle {
-            transition: stroke-dasharray 0.35s;
-            transform-origin: 50% 50%;
-        }
-        .icon-bounce {
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-        .template-card {
-            background: linear-gradient(145deg, #f8fafc, #e2e8f0);
-            border: 1px solid #cbd5e1;
-        }
-        .template-card:hover {
-            background: linear-gradient(145deg, #e2e8f0, #cbd5e1);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .modal { backdrop-filter: blur(8px); }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .section-gradient { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .principles-gradient { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .guidelines-gradient { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .frameworks-gradient { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .tools-gradient { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .contact-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-gray-50 min-h-screen">
     <!-- Header -->
-    <header class="gradient-bg text-white shadow-2xl">
-        <div class="container mx-auto px-6 py-8">
-            <div class="text-center">
-                <div class="flex justify-center mb-4">
-                    <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                        <span class="text-4xl">🎓</span>
-                    </div>
-                </div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Enterprise AI Governance 2025</h1>
-                <p class="text-xl opacity-90 max-w-3xl mx-auto">
-                    Master the principles, frameworks, and tools for responsible AI implementation in modern enterprises
-                </p>
-                <div class="mt-8 flex justify-center space-x-6">
-                    <div class="text-center">
-                        <div class="text-2xl font-bold">4</div>
-                        <div class="text-sm opacity-80">Core Modules</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold">25+</div>
-                        <div class="text-sm opacity-80">Templates</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold">2025</div>
-                        <div class="text-sm opacity-80">Updated Standards</div>
-                    </div>
-                </div>
-            </div>
+    <header class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Enterprise AI Governance 2025</h1>
+            <p class="text-lg opacity-90">Navigate the future of Responsible AI implementation</p>
         </div>
     </header>
 
-    <!-- Progress Indicator -->
-    <div class="bg-white shadow-sm border-b sticky top-0 z-40">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <span class="text-sm font-medium text-gray-600">Learning Progress:</span>
-                    <div class="flex space-x-2">
-                        <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
-                        <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
-                        <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
-                        <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
-                    </div>
-                </div>
-                <div class="text-sm text-gray-600">
-                    <span id="completedModules">0</span> of 4 modules completed
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Main Dashboard -->
     <main class="container mx-auto px-6 py-12">
-        <!-- Quick Stats -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-            <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover">
-                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span class="text-blue-600 text-xl">📊</span>
-                </div>
-                <div class="text-2xl font-bold text-gray-900 mb-1">87%</div>
-                <div class="text-sm text-gray-600">Enterprises using AI</div>
-            </div>
-            <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover">
-                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span class="text-green-600 text-xl">⚖️</span>
-                </div>
-                <div class="text-2xl font-bold text-gray-900 mb-1">156</div>
-                <div class="text-sm text-gray-600">AI regulations worldwide</div>
-            </div>
-            <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover">
-                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span class="text-purple-600 text-xl">🛡️</span>
-                </div>
-                <div class="text-2xl font-bold text-gray-900 mb-1">$2.3T</div>
-                <div class="text-sm text-gray-600">AI governance market</div>
-            </div>
-            <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover">
-                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span class="text-orange-600 text-xl">🚀</span>
-                </div>
-                <div class="text-2xl font-bold text-gray-900 mb-1">95%</div>
-                <div class="text-sm text-gray-600">Compliance improvement</div>
-            </div>
-        </div>
-
-        <!-- Core Learning Modules -->
+        <!-- Principles Section -->
         <section class="mb-16">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Core Learning Modules</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Explore the four essential pillars of enterprise AI governance
-                </p>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">AI Governance Principles</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Fundamental principles that guide ethical and responsible AI development and deployment in enterprise environments.</p>
             </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Principles Module -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover" onclick="openModal('principlesModal')">
-                    <div class="flex items-start space-x-4 mb-6">
-                        <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <span class="text-blue-600 text-2xl">⚖️</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">AI Governance Principles</h3>
-                            <p class="text-gray-600">
-                                Master the foundational principles of fairness, transparency, accountability, and privacy that guide responsible AI development.
-                            </p>
-                        </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-blue-500" onclick="openModal('transparency')">
+                    <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🔍</span>
                     </div>
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="bg-blue-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-blue-900">Fairness</div>
-                            <div class="text-xs text-blue-700">Bias detection & mitigation</div>
-                        </div>
-                        <div class="bg-green-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-green-900">Transparency</div>
-                            <div class="text-xs text-green-700">Explainable AI methods</div>
-                        </div>
-                        <div class="bg-purple-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-purple-900">Accountability</div>
-                            <div class="text-xs text-purple-700">Clear responsibility chains</div>
-                        </div>
-                        <div class="bg-orange-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-orange-900">Privacy</div>
-                            <div class="text-xs text-orange-700">GDPR & CCPA compliance</div>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-gray-500">4 core principles • 8 templates</span>
-                        <div class="flex items-center space-x-2 text-blue-600">
-                            <span class="text-sm font-medium">Explore Module</span>
-                            <span>→</span>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Transparency</h3>
+                    <p class="text-gray-600">Clear visibility into AI decision-making processes</p>
                 </div>
 
-                <!-- Guidelines Module -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover" onclick="openModal('guidelinesModal')">
-                    <div class="flex items-start space-x-4 mb-6">
-                        <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <span class="text-green-600 text-2xl">📋</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Implementation Guidelines</h3>
-                            <p class="text-gray-600">
-                                Practical step-by-step guidelines for ethical deployment, policy creation, monitoring, and incident response.
-                            </p>
-                        </div>
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-green-500" onclick="openModal('accountability')">
+                    <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">⚖️</span>
                     </div>
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="bg-green-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-green-900">Ethical Deployment</div>
-                            <div class="text-xs text-green-700">SOPs & checklists</div>
-                        </div>
-                        <div class="bg-blue-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-blue-900">Policy Templates</div>
-                            <div class="text-xs text-blue-700">Ready-to-use policies</div>
-                        </div>
-                        <div class="bg-purple-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-purple-900">Monitoring</div>
-                            <div class="text-xs text-purple-700">Performance tracking</div>
-                        </div>
-                        <div class="bg-red-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-red-900">Incident Response</div>
-                            <div class="text-xs text-red-700">Crisis management</div>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-gray-500">4 guideline areas • 12 templates</span>
-                        <div class="flex items-center space-x-2 text-green-600">
-                            <span class="text-sm font-medium">Explore Module</span>
-                            <span>→</span>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Accountability</h3>
+                    <p class="text-gray-600">Clear ownership and responsibility for AI outcomes</p>
                 </div>
 
-                <!-- Frameworks Module -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover" onclick="openModal('frameworksModal')">
-                    <div class="flex items-start space-x-4 mb-6">
-                        <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <span class="text-purple-600 text-2xl">🏗️</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Governance Frameworks</h3>
-                            <p class="text-gray-600">
-                                Comprehensive frameworks for model lifecycle management, risk assessment, and regulatory compliance across industries.
-                            </p>
-                        </div>
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-purple-500" onclick="openModal('fairness')">
+                    <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🤝</span>
                     </div>
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="bg-purple-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-purple-900">Lifecycle Management</div>
-                            <div class="text-xs text-purple-700">End-to-end processes</div>
-                        </div>
-                        <div class="bg-red-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-red-900">Risk Assessment</div>
-                            <div class="text-xs text-red-700">Comprehensive evaluation</div>
-                        </div>
-                        <div class="bg-blue-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-blue-900">Compliance</div>
-                            <div class="text-xs text-blue-700">Global regulations</div>
-                        </div>
-                        <div class="bg-yellow-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-yellow-900">Industry Standards</div>
-                            <div class="text-xs text-yellow-700">Sector-specific rules</div>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-gray-500">3 framework types • 15 templates</span>
-                        <div class="flex items-center space-x-2 text-purple-600">
-                            <span class="text-sm font-medium">Explore Module</span>
-                            <span>→</span>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Fairness</h3>
+                    <p class="text-gray-600">Ensuring equitable treatment across all user groups</p>
                 </div>
 
-                <!-- Tools Module -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover" onclick="openModal('toolsModal')">
-                    <div class="flex items-start space-x-4 mb-6">
-                        <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <span class="text-orange-600 text-2xl">🔧</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Governance Tools</h3>
-                            <p class="text-gray-600">
-                                Practical tools for documentation, auditing, monitoring, bias detection, and explainability implementation.
-                            </p>
-                        </div>
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-red-500" onclick="openModal('privacy')">
+                    <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🔒</span>
                     </div>
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="bg-orange-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-orange-900">Documentation</div>
-                            <div class="text-xs text-orange-700">Automated logging</div>
-                        </div>
-                        <div class="bg-blue-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-blue-900">Auditing</div>
-                            <div class="text-xs text-blue-700">Decision evaluation</div>
-                        </div>
-                        <div class="bg-green-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-green-900">Monitoring</div>
-                            <div class="text-xs text-green-700">Real-time dashboards</div>
-                        </div>
-                        <div class="bg-red-50 p-3 rounded-lg">
-                            <div class="text-sm font-medium text-red-900">Bias Detection</div>
-                            <div class="text-xs text-red-700">Testing utilities</div>
-                        </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Privacy</h3>
+                    <p class="text-gray-600">Protecting individual and organizational data rights</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-yellow-500" onclick="openModal('reliability')">
+                    <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🛡️</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-gray-500">5 tool categories • 20+ resources</span>
-                        <div class="flex items-center space-x-2 text-orange-600">
-                            <span class="text-sm font-medium">Explore Module</span>
-                            <span>→</span>
-                        </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Reliability</h3>
+                    <p class="text-gray-600">Consistent and dependable AI system performance</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-indigo-500" onclick="openModal('human-oversight')">
+                    <div class="principles-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">👥</span>
                     </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Human Oversight</h3>
+                    <p class="text-gray-600">Maintaining meaningful human control over AI systems</p>
                 </div>
             </div>
         </section>
 
-        <!-- Quick Access Templates -->
+        <!-- Guidelines Section -->
         <section class="mb-16">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Quick Access Templates</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Download ready-to-use templates and checklists for immediate implementation
-                </p>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Implementation Guidelines</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Practical guidelines for implementing AI governance across different organizational functions and processes.</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="template-card rounded-xl p-6 card-hover" onclick="downloadTemplate('ai-ethics-policy')">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                            <span class="text-blue-600">📜</span>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">AI Ethics Policy</h4>
-                            <p class="text-sm text-gray-600">Comprehensive policy template</p>
-                        </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-emerald-500" onclick="openModal('risk-assessment')">
+                    <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">📊</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs text-gray-500">PDF • 12 pages</span>
-                        <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">Download</button>
-                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Risk Assessment</h3>
+                    <p class="text-gray-600">Systematic evaluation of AI-related risks</p>
                 </div>
 
-                <div class="template-card rounded-xl p-6 card-hover" onclick="downloadTemplate('bias-assessment')">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                            <span class="text-red-600">⚖️</span>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Bias Assessment Checklist</h4>
-                            <p class="text-sm text-gray-600">Pre-deployment testing guide</p>
-                        </div>
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-teal-500" onclick="openModal('data-governance')">
+                    <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">💾</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs text-gray-500">Excel • Interactive</span>
-                        <button class="text-red-600 hover:text-red-800 text-sm font-medium">Download</button>
-                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Data Governance</h3>
+                    <p class="text-gray-600">Managing data quality, lineage, and compliance</p>
                 </div>
 
-                <div class="template-card rounded-xl p-6 card-hover" onclick="downloadTemplate('model-card')">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                            <span class="text-green-600">📊</span>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Model Card Template</h4>
-                            <p class="text-sm text-gray-600">Standardized documentation</p>
-                        </div>
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-cyan-500" onclick="openModal('model-lifecycle')">
+                    <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🔄</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs text-gray-500">Word • Editable</span>
-                        <button class="text-green-600 hover:text-green-800 text-sm font-medium">Download</button>
-                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Model Lifecycle</h3>
+                    <p class="text-gray-600">End-to-end management of AI model development</p>
                 </div>
 
-                <div class="template-card rounded-xl p-6 card-hover" onclick="downloadTemplate('risk-matrix')">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                            <span class="text-purple-600">⚠️</span>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Risk Assessment Matrix</h4>
-                            <p class="text-sm text-gray-600">Interactive risk calculator</p>
-                        </div>
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-lime-500" onclick="openModal('compliance-monitoring')">
+                    <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">📋</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs text-gray-500">Excel • Formulas</span>
-                        <button class="text-purple-600 hover:text-purple-800 text-sm font-medium">Download</button>
-                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Compliance Monitoring</h3>
+                    <p class="text-gray-600">Continuous oversight of regulatory adherence</p>
                 </div>
 
-                <div class="template-card rounded-xl p-6 card-hover" onclick="downloadTemplate('incident-response')">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                            <span class="text-orange-600">🚨</span>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Incident Response Plan</h4>
-                            <p class="text-sm text-gray-600">Crisis management workflow</p>
-                        </div>
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-green-600" onclick="openModal('stakeholder-engagement')">
+                    <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🤝</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs text-gray-500">PDF • 8 pages</span>
-                        <button class="text-orange-600 hover:text-orange-800 text-sm font-medium">Download</button>
-                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Stakeholder Engagement</h3>
+                    <p class="text-gray-600">Involving all relevant parties in AI governance</p>
                 </div>
 
-                <div class="template-card rounded-xl p-6 card-hover" onclick="downloadTemplate('compliance-checklist')">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                            <span class="text-yellow-600">✅</span>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Compliance Checklist</h4>
-                            <p class="text-sm text-gray-600">GDPR & CCPA requirements</p>
-                        </div>
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-emerald-600" onclick="openModal('incident-response')">
+                    <div class="guidelines-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🚨</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs text-gray-500">PDF • Checklist</span>
-                        <button class="text-yellow-600 hover:text-yellow-800 text-sm font-medium">Download</button>
-                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Incident Response</h3>
+                    <p class="text-gray-600">Structured approach to handling AI failures</p>
                 </div>
             </div>
         </section>
 
-        <!-- Interactive Assessment -->
+        <!-- Frameworks Section -->
         <section class="mb-16">
-            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold mb-4">AI Governance Readiness Assessment</h2>
-                    <p class="text-xl opacity-90 max-w-2xl mx-auto">
-                        Evaluate your organization's current AI governance maturity and get personalized recommendations
-                    </p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Governance Frameworks</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Established frameworks and standards that provide structure for enterprise AI governance implementation.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-pink-500" onclick="openModal('nist-framework')">
+                    <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🏛️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">NIST AI Framework</h3>
+                    <p class="text-gray-600">National Institute of Standards comprehensive approach</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                        <div class="text-2xl mb-2">📊</div>
-                        <h3 class="font-semibold mb-2">Current State Analysis</h3>
-                        <p class="text-sm opacity-80">Assess your existing governance practices</p>
+
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-rose-500" onclick="openModal('iso-standards')">
+                    <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">📜</span>
                     </div>
-                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                        <div class="text-2xl mb-2">🎯</div>
-                        <h3 class="font-semibold mb-2">Gap Identification</h3>
-                        <p class="text-sm opacity-80">Identify areas for improvement</p>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                        <div class="text-2xl mb-2">🚀</div>
-                        <h3 class="font-semibold mb-2">Action Plan</h3>
-                        <p class="text-sm opacity-80">Get customized implementation roadmap</p>
-                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">ISO/IEC Standards</h3>
+                    <p class="text-gray-600">International standards for AI governance</p>
                 </div>
-                <div class="text-center">
-                    <button onclick="startAssessment()" class="bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
-                        Start Assessment (15 minutes)
+
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-orange-500" onclick="openModal('eu-ai-act')">
+                    <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🇪🇺</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">EU AI Act</h3>
+                    <p class="text-gray-600">European Union's comprehensive AI regulation</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-amber-500" onclick="openModal('responsible-ai')">
+                    <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🌟</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Responsible AI</h3>
+                    <p class="text-gray-600">Industry best practices for ethical AI development</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-yellow-600" onclick="openModal('cobit-framework')">
+                    <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">⚙️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">COBIT for AI</h3>
+                    <p class="text-gray-600">IT governance framework adapted for AI systems</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-orange-600" onclick="openModal('industry-specific')">
+                    <div class="frameworks-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🏢</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Industry-Specific</h3>
+                    <p class="text-gray-600">Sector-tailored governance approaches</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Governance Tools</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Essential tools and technologies that support the implementation and monitoring of AI governance practices.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-sky-500" onclick="openModal('model-registry')">
+                    <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">📚</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Model Registry</h3>
+                    <p class="text-gray-600">Centralized repository for AI model management</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-blue-400" onclick="openModal('monitoring-platforms')">
+                    <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">📈</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Monitoring Platforms</h3>
+                    <p class="text-gray-600">Real-time AI system performance tracking</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-indigo-400" onclick="openModal('audit-tools')">
+                    <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">🔍</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Audit Tools</h3>
+                    <p class="text-gray-600">Comprehensive AI system auditing capabilities</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-purple-400" onclick="openModal('bias-detection')">
+                    <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">⚖️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Bias Detection</h3>
+                    <p class="text-gray-600">Tools for identifying and mitigating AI bias</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-violet-400" onclick="openModal('explainability-tools')">
+                    <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">💡</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Explainability Tools</h3>
+                    <p class="text-gray-600">Making AI decisions interpretable and transparent</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg card-hover cursor-pointer p-6 border-l-4 border-fuchsia-400" onclick="openModal('documentation-systems')">
+                    <div class="tools-gradient w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-white text-xl">📝</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Documentation Systems</h3>
+                    <p class="text-gray-600">Automated governance documentation and reporting</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Card -->
+        <section class="mb-8">
+            <div class="max-w-2xl mx-auto">
+                <div class="contact-gradient rounded-2xl shadow-2xl p-8 text-white text-center">
+                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl">👨‍💼</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">AI Governance Consultant</h3>
+                    <p class="text-lg opacity-90 mb-6">Ready to implement enterprise AI governance in your organization?</p>
+                    <button onclick="window.location.href='mailto:sumedhghatage10@gmail.com?subject=AI Governance Consultation Inquiry'" 
+                            class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 shadow-lg">
+                        Connect with Me
                     </button>
+                    <p class="text-sm opacity-75 mt-4">sumedhghatage10@gmail.com</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Modals -->
-    <!-- Principles Modal -->
-    <div id="principlesModal" class="modal">
-        <div class="modal-content">
-            <div class="gradient-bg text-white p-6 rounded-t-2xl">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">⚖️</span>
-                        </div>
-                        <div>
-                            <h2 class="text-2xl font-bold">AI Governance Principles</h2>
-                            <p class="opacity-90">Foundational principles for responsible AI</p>
-                        </div>
-                    </div>
-                    <button onclick="closeModal('principlesModal')" class="text-white hover:text-gray-200 text-2xl">&times;</button>
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 modal hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 id="modal-title" class="text-2xl font-bold text-gray-800"></h3>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
                 </div>
-            </div>
-            <div class="p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div class="p-6 bg-blue-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-blue-900 mb-3">🎯 Fairness</h3>
-                        <p class="text-blue-800 mb-4">Ensure AI systems treat all individuals and groups equitably, without discrimination or bias.</p>
-                        <ul class="text-sm text-blue-700 space-y-1">
-                            <li>• Bias detection and mitigation techniques</li>
-                            <li>• Demographic parity assessment</li>
-                            <li>• Equal opportunity testing</li>
-                            <li>• Continuous fairness monitoring</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 bg-green-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-green-900 mb-3">🔍 Transparency</h3>
-                        <p class="text-green-800 mb-4">Make AI decisions interpretable and provide clear explanations for outcomes.</p>
-                        <ul class="text-sm text-green-700 space-y-1">
-                            <li>• Model explainability methods</li>
-                            <li>• Decision audit trails</li>
-                            <li>• Documentation standards</li>
-                            <li>• Stakeholder communication</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 bg-purple-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-purple-900 mb-3">📋 Accountability</h3>
-                        <p class="text-purple-800 mb-4">Establish clear responsibility chains and governance structures for AI systems.</p>
-                        <ul class="text-sm text-purple-700 space-y-1">
-                            <li>• Role and responsibility matrices</li>
-                            <li>• Decision-making hierarchies</li>
-                            <li>• Performance accountability</li>
-                            <li>• Escalation procedures</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 bg-orange-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-orange-900 mb-3">🛡️ Privacy & Security</h3>
-                        <p class="text-orange-800 mb-4">Protect sensitive data and ensure compliance with privacy regulations.</p>
-                        <ul class="text-sm text-orange-700 space-y-1">
-                            <li>• Data minimization strategies</li>
-                            <li>• Encryption and anonymization</li>
-                            <li>• GDPR/CCPA compliance</li>
-                            <li>• Security vulnerability assessment</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-xl">
-                    <h3 class="text-lg font-bold text-gray-900 mb-4">📥 Available Templates & Resources</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <button onclick="downloadTemplate('fairness-checklist')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Fairness Assessment Checklist</div>
-                            <div class="text-sm text-gray-600">Comprehensive bias evaluation framework</div>
-                        </button>
-                        <button onclick="downloadTemplate('transparency-guide')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Transparency Implementation Guide</div>
-                            <div class="text-sm text-gray-600">Step-by-step explainability setup</div>
-                        </button>
-                        <button onclick="downloadTemplate('accountability-matrix')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">RACI Accountability Matrix</div>
-                            <div class="text-sm text-gray-600">Role assignment template</div>
-                        </button>
-                        <button onclick="downloadTemplate('privacy-assessment')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Privacy Impact Assessment</div>
-                            <div class="text-sm text-gray-600">GDPR compliance evaluation</div>
-                        </button>
-                    </div>
-                </div>
+                <div id="modal-content" class="text-gray-600 leading-relaxed"></div>
             </div>
         </div>
     </div>
-
-    <!-- Guidelines Modal -->
-    <div id="guidelinesModal" class="modal">
-        <div class="modal-content">
-            <div class="bg-green-600 text-white p-6 rounded-t-2xl">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">📋</span>
-                        </div>
-                        <div>
-                            <h2 class="text-2xl font-bold">Implementation Guidelines</h2>
-                            <p class="opacity-90">Practical steps for AI governance</p>
-                        </div>
-                    </div>
-                    <button onclick="closeModal('guidelinesModal')" class="text-white hover:text-gray-200 text-2xl">&times;</button>
-                </div>
-            </div>
-            <div class="p-6">
-                <div class="space-y-6">
-                    <div class="p-6 bg-green-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-green-900 mb-3">🎯 Ethical Deployment</h3>
-                        <p class="text-green-800 mb-4">Standard operating procedures for responsible AI system deployment.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <h4 class="font-medium text-green-900 mb-2">Pre-deployment Checklist:</h4>
-                                <ul class="text-sm text-green-700 space-y-1">
-                                    <li>• Ethics board review</li>
-                                    <li>• Bias testing completion</li>
-                                    <li>• Privacy impact assessment</li>
-                                    <li>• Documentation verification</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-green-900 mb-2">Deployment Stages:</h4>
-                                <ul class="text-sm text-green-700 space-y-1">
-                                    <li>• Pilot testing (2-4 weeks)</li>
-                                    <li>• Gradual rollout (4-8 weeks)</li>
-                                    <li>• Full deployment</li>
-                                    <li>• Continuous monitoring</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-blue-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-blue-900 mb-3">📜 Governance Policies</h3>
-                        <p class="text-blue-800 mb-4">Ready-to-use policy templates adaptable to your organization.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <h4 class="font-medium text-blue-900 mb-2">Available Policies:</h4>
-                                <ul class="text-sm text-blue-700 space-y-1">
-                                    <li>• AI Ethics Policy</li>
-                                    <li>• Data Governance Policy</li>
-                                    <li>• Model Management Policy</li>
-                                    <li>• Incident Response Policy</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-blue-900 mb-2">Customization Guide:</h4>
-                                <ul class="text-sm text-blue-700 space-y-1">
-                                    <li>• Industry-specific adaptations</li>
-                                    <li>• Regional compliance updates</li>
-                                    <li>• Organizational structure alignment</li>
-                                    <li>• Stakeholder approval process</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-purple-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-purple-900 mb-3">📊 Monitoring & Auditing</h3>
-                        <p class="text-purple-800 mb-4">Comprehensive approaches to tracking model performance and compliance.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div>
-                                <h4 class="font-medium text-purple-900 mb-2">Real-time Monitoring:</h4>
-                                <ul class="text-sm text-purple-700 space-y-1">
-                                    <li>• Performance metrics</li>
-                                    <li>• Bias drift detection</li>
-                                    <li>• Data quality checks</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-purple-900 mb-2">Periodic Auditing:</h4>
-                                <ul class="text-sm text-purple-700 space-y-1">
-                                    <li>• Monthly reviews</li>
-                                    <li>• Quarterly assessments</li>
-                                    <li>• Annual compliance audits</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-purple-900 mb-2">Event-driven:</h4>
-                                <ul class="text-sm text-purple-700 space-y-1">
-                                    <li>• Incident investigations</li>
-                                    <li>• Complaint responses</li>
-                                    <li>• Regulatory inquiries</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-red-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-red-900 mb-3">🚨 Incident Response</h3>
-                        <p class="text-red-800 mb-4">Structured procedures for handling AI-related incidents and compliance failures.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <h4 class="font-medium text-red-900 mb-2">Incident Classification:</h4>
-                                <ul class="text-sm text-red-700 space-y-1">
-                                    <li>• Critical (P0): < 1 hour response</li>
-                                    <li>• High (P1): < 4 hours response</li>
-                                    <li>• Medium (P2): < 24 hours response</li>
-                                    <li>• Low (P3): < 72 hours response</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-red-900 mb-2">Response Workflow:</h4>
-                                <ul class="text-sm text-red-700 space-y-1">
-                                    <li>• Detection and alerting</li>
-                                    <li>• Assessment and classification</li>
-                                    <li>• Containment and mitigation</li>
-                                    <li>• Resolution and recovery</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 p-6 rounded-xl mt-6">
-                    <h3 class="text-lg font-bold text-gray-900 mb-4">📥 Download Implementation Resources</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <button onclick="downloadTemplate('deployment-checklist')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Deployment Checklist</div>
-                            <div class="text-sm text-gray-600">Complete pre-deployment validation</div>
-                        </button>
-                        <button onclick="downloadTemplate('policy-templates')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Policy Template Bundle</div>
-                            <div class="text-sm text-gray-600">All governance policies in one package</div>
-                        </button>
-                        <button onclick="downloadTemplate('monitoring-dashboard')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Monitoring Dashboard Template</div>
-                            <div class="text-sm text-gray-600">Customizable monitoring interface</div>
-                        </button>
-                        <button onclick="downloadTemplate('incident-playbook')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Incident Response Playbook</div>
-                            <div class="text-sm text-gray-600">Step-by-step crisis management</div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Frameworks Modal -->
-    <div id="frameworksModal" class="modal">
-        <div class="modal-content">
-            <div class="bg-purple-600 text-white p-6 rounded-t-2xl">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">🏗️</span>
-                        </div>
-                        <div>
-                            <h2 class="text-2xl font-bold">Governance Frameworks</h2>
-                            <p class="opacity-90">Structured approaches to AI governance</p>
-                        </div>
-                    </div>
-                    <button onclick="closeModal('frameworksModal')" class="text-white hover:text-gray-200 text-2xl">&times;</button>
-                </div>
-            </div>
-            <div class="p-6">
-                <div class="space-y-6">
-                    <div class="p-6 bg-purple-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-purple-900 mb-3">🔄 Model Lifecycle Management</h3>
-                        <p class="text-purple-800 mb-4">End-to-end framework for managing AI models from conception to retirement.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
-                            <div class="text-center">
-                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">1</div>
-                                <h4 class="font-medium text-purple-900">Planning</h4>
-                                <p class="text-xs text-purple-700">Requirements & Design</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">2</div>
-                                <h4 class="font-medium text-purple-900">Development</h4>
-                                <p class="text-xs text-purple-700">Data & Training</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">3</div>
-                                <h4 class="font-medium text-purple-900">Validation</h4>
-                                <p class="text-xs text-purple-700">Testing & Review</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">4</div>
-                                <h4 class="font-medium text-purple-900">Deployment</h4>
-                                <p class="text-xs text-purple-700">Release & Monitor</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">5</div>
-                                <h4 class="font-medium text-purple-900">Retirement</h4>
-                                <p class="text-xs text-purple-700">Decommission</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-red-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-red-900 mb-3">⚠️ Risk Assessment Framework</h3>
-                        <p class="text-red-800 mb-4">Comprehensive approach to identifying, evaluating, and mitigating AI risks.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div>
-                                <h4 class="font-medium text-red-900 mb-2">Risk Categories:</h4>
-                                <ul class="text-sm text-red-700 space-y-1">
-                                    <li>• Algorithmic bias</li>
-                                    <li>• Privacy violations</li>
-                                    <li>• Security vulnerabilities</li>
-                                    <li>• Operational failures</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-red-900 mb-2">Assessment Matrix:</h4>
-                                <ul class="text-sm text-red-700 space-y-1">
-                                    <li>• Probability evaluation</li>
-                                    <li>• Impact assessment</li>
-                                    <li>• Risk scoring</li>
-                                    <li>• Mitigation planning</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-red-900 mb-2">Monitoring:</h4>
-                                <ul class="text-sm text-red-700 space-y-1">
-                                    <li>• Continuous assessment</li>
-                                    <li>• Risk trend analysis</li>
-                                    <li>• Alert thresholds</li>
-                                    <li>• Escalation procedures</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-blue-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-blue-900 mb-3">📋 Compliance Framework</h3>
-                        <p class="text-blue-800 mb-4">Navigate global regulatory requirements and industry-specific standards.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div>
-                                <h4 class="font-medium text-blue-900 mb-2">🇪🇺 European Union:</h4>
-                                <ul class="text-sm text-blue-700 space-y-1">
-                                    <li>• EU AI Act (2024-2025)</li>
-                                    <li>• GDPR AI Amendments</li>
-                                    <li>• Digital Services Act</li>
-                                    <li>• Sector regulations</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-blue-900 mb-2">🇺🇸 United States:</h4>
-                                <ul class="text-sm text-blue-700 space-y-1">
-                                    <li>• CCPA 2.0 (California)</li>
-                                    <li>• Federal AI Orders</li>
-                                    <li>• NIST AI Framework</li>
-                                    <li>• State-level laws</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-blue-900 mb-2">🌏 Asia-Pacific:</h4>
-                                <ul class="text-sm text-blue-700 space-y-1">
-                                    <li>• Singapore Model AI</li>
-                                    <li>• Japan AI Guidelines</li>
-                                    <li>• Australia Privacy Act</li>
-                                    <li>• China AI Regulations</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 p-6 rounded-xl mt-6">
-                    <h3 class="text-lg font-bold text-gray-900 mb-4">📥 Framework Implementation Tools</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <button onclick="downloadTemplate('lifecycle-template')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Lifecycle Management Template</div>
-                            <div class="text-sm text-gray-600">Customizable process framework</div>
-                        </button>
-                        <button onclick="downloadTemplate('risk-calculator')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Risk Assessment Calculator</div>
-                            <div class="text-sm text-gray-600">Interactive risk evaluation tool</div>
-                        </button>
-                        <button onclick="downloadTemplate('compliance-matrix')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Global Compliance Matrix</div>
-                            <div class="text-sm text-gray-600">Regional requirement mapping</div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tools Modal -->
-    <div id="toolsModal" class="modal">
-        <div class="modal-content">
-            <div class="bg-orange-600 text-white p-6 rounded-t-2xl">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">🔧</span>
-                        </div>
-                        <div>
-                            <h2 class="text-2xl font-bold">AI Governance Tools</h2>
-                            <p class="opacity-90">Practical implementation tools</p>
-                        </div>
-                    </div>
-                    <button onclick="closeModal('toolsModal')" class="text-white hover:text-gray-200 text-2xl">&times;</button>
-                </div>
-            </div>
-            <div class="p-6">
-                <div class="space-y-6">
-                    <div class="p-6 bg-orange-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-orange-900 mb-3">📝 Documentation Tools</h3>
-                        <p class="text-orange-800 mb-4">Automated tools for creating comprehensive AI system documentation.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <h4 class="font-medium text-orange-900 mb-2">Model Cards Generator:</h4>
-                                <ul class="text-sm text-orange-700 space-y-1">
-                                    <li>• Automated documentation</li>
-                                    <li>• Performance metrics</li>
-                                    <li>• Bias assessment results</li>
-                                    <li>• Usage recommendations</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-orange-900 mb-2">Traceability Matrix:</h4>
-                                <ul class="text-sm text-orange-700 space-y-1">
-                                    <li>• Requirement tracking</li>
-                                    <li>• Implementation mapping</li>
-                                    <li>• Test coverage</li>
-                                    <li>• Compliance verification</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-blue-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-blue-900 mb-3">🔍 Auditing Tools</h3>
-                        <p class="text-blue-800 mb-4">Comprehensive platforms for evaluating AI decisions and system performance.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div>
-                                <h4 class="font-medium text-blue-900 mb-2">AI Fairness 360:</h4>
-                                <ul class="text-sm text-blue-700 space-y-1">
-                                    <li>• 70+ fairness metrics</li>
-                                    <li>• Bias mitigation algorithms</li>
-                                    <li>• Interactive visualizations</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-blue-900 mb-2">Fairlearn:</h4>
-                                <ul class="text-sm text-blue-700 space-y-1">
-                                    <li>• Fairness dashboard</li>
-                                    <li>• Mitigation strategies</li>
-                                    <li>• Scikit-learn integration</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-blue-900 mb-2">What-If Tool:</h4>
-                                <ul class="text-sm text-blue-700 space-y-1">
-                                    <li>• Visual model analysis</li>
-                                    <li>• Counterfactual testing</li>
-                                    <li>• Fairness constraints</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-green-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-green-900 mb-3">📊 Monitoring Dashboards</h3>
-                        <p class="text-green-800 mb-4">Real-time compliance tracking and performance monitoring systems.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <h4 class="font-medium text-green-900 mb-2">Real-time Monitoring:</h4>
-                                <ul class="text-sm text-green-700 space-y-1">
-                                    <li>• Performance metrics tracking</li>
-                                    <li>• Bias drift detection</li>
-                                    <li>• Data quality monitoring</li>
-                                    <li>• System health checks</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-green-900 mb-2">Alert Configuration:</h4>
-                                <ul class="text-sm text-green-700 space-y-1">
-                                    <li>• Custom threshold settings</li>
-                                    <li>• Multi-channel notifications</li>
-                                    <li>• Escalation procedures</li>
-                                    <li>• Automated responses</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-red-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-red-900 mb-3">⚖️ Bias Detection Utilities</h3>
-                        <p class="text-red-800 mb-4">Specialized tools for testing and mitigating algorithmic bias before deployment.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <h4 class="font-medium text-red-900 mb-2">Pre-deployment Testing:</h4>
-                                <ul class="text-sm text-red-700 space-y-1">
-                                    <li>• Statistical parity tests</li>
-                                    <li>• Equal opportunity analysis</li>
-                                    <li>• Demographic parity checks</li>
-                                    <li>• Calibration assessment</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-red-900 mb-2">Interactive Testing:</h4>
-                                <ul class="text-sm text-red-700 space-y-1">
-                                    <li>• Upload test datasets</li>
-                                    <li>• Configure bias metrics</li>
-                                    <li>• Generate detailed reports</li>
-                                    <li>• Mitigation recommendations</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-purple-50 rounded-xl">
-                        <h3 class="text-lg font-bold text-purple-900 mb-3">💡 Explainability Libraries</h3>
-                        <p class="text-purple-800 mb-4">Open-source tools for implementing model interpretability and explanation features.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div>
-                                <h4 class="font-medium text-purple-900 mb-2">SHAP:</h4>
-                                <ul class="text-sm text-purple-700 space-y-1">
-                                    <li>• Feature importance</li>
-                                    <li>• Local explanations</li>
-                                    <li>• Visualization tools</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-purple-900 mb-2">LIME:</h4>
-                                <ul class="text-sm text-purple-700 space-y-1">
-                                    <li>• Model-agnostic</li>
-                                    <li>• Individual predictions</li>
-                                    <li>• Text/image support</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-purple-900 mb-2">InterpretML:</h4>
-                                <ul class="text-sm text-purple-700 space-y-1">
-                                    <li>• Glass-box models</li>
-                                    <li>• Global explanations</li>
-                                    <li>• Unified framework</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 p-6 rounded-xl mt-6">
-                    <h3 class="text-lg font-bold text-gray-900 mb-4">📥 Tool Implementation Resources</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <button onclick="downloadTemplate('documentation-toolkit')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Documentation Toolkit</div>
-                            <div class="text-sm text-gray-600">Model cards and traceability templates</div>
-                        </button>
-                        <button onclick="downloadTemplate('auditing-setup')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Auditing Tool Setup Guide</div>
-                            <div class="text-sm text-gray-600">Implementation instructions</div>
-                        </button>
-                        <button onclick="downloadTemplate('monitoring-config')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Monitoring Configuration</div>
-                            <div class="text-sm text-gray-600">Dashboard setup templates</div>
-                        </button>
-                        <button onclick="downloadTemplate('bias-testing-suite')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                            <div class="font-medium text-gray-900">Bias Testing Suite</div>
-                            <div class="text-sm text-gray-600">Complete testing framework</div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-lg font-bold mb-4">AI Governance 2025</h3>
-                    <p class="text-gray-400 text-sm">
-                        Comprehensive learning platform for enterprise AI governance and responsible AI implementation.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Learning Modules</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white">Principles</a></li>
-                        <li><a href="#" class="hover:text-white">Guidelines</a></li>
-                        <li><a href="#" class="hover:text-white">Frameworks</a></li>
-                        <li><a href="#" class="hover:text-white">Tools</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Resources</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white">Templates</a></li>
-                        <li><a href="#" class="hover:text-white">Checklists</a></li>
-                        <li><a href="#" class="hover:text-white">Case Studies</a></li>
-                        <li><a href="#" class="hover:text-white">Best Practices</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Support</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white">Documentation</a></li>
-                        <li><a href="#" class="hover:text-white">Community</a></li>
-                        <li><a href="#" class="hover:text-white">Updates</a></li>
-                        <li><a href="#" class="hover:text-white">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-                <p>&copy; 2025 Enterprise AI Governance Learning Platform. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
 
     <script>
-        // Modal functionality
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
+        const modalContent = {
+            'transparency': {
+                title: 'Transparency in AI Systems',
+                content: `Transparency in AI governance ensures that stakeholders can understand how AI systems make decisions and operate. This principle requires organizations to provide clear documentation about AI model architecture, training data sources, decision-making processes, and potential limitations. Transparency builds trust with users, regulators, and internal teams by making AI systems more interpretable and accountable. It involves creating audit trails, maintaining comprehensive documentation, and providing explanations for AI-driven decisions in language that non-technical stakeholders can understand. Organizations must balance transparency with intellectual property protection and competitive advantages while ensuring sufficient visibility into AI operations.`
+            },
+            'accountability': {
+                title: 'Accountability in AI Governance',
+                content: `Accountability establishes clear ownership and responsibility for AI system outcomes, decisions, and impacts. This principle requires organizations to designate specific individuals or teams responsible for AI system performance, ethical compliance, and risk management. Accountability frameworks define roles and responsibilities across the AI lifecycle, from development to deployment and monitoring. It includes establishing clear escalation paths for AI-related issues, defining success metrics and failure criteria, and ensuring that decision-makers can be held responsible for AI system outcomes. Organizations must create governance structures that enable swift action when AI systems underperform or cause unintended consequences, with clear lines of authority and responsibility.`
+            },
+            'fairness': {
+                title: 'Fairness and Non-Discrimination',
+                content: `Fairness in AI systems ensures equitable treatment across all user groups and prevents discriminatory outcomes based on protected characteristics such as race, gender, age, or socioeconomic status. This principle requires organizations to actively identify, measure, and mitigate bias in AI systems throughout their lifecycle. Fairness involves using diverse and representative training data, implementing bias detection and correction mechanisms, and regularly auditing AI outcomes for discriminatory patterns. Organizations must establish fairness metrics appropriate to their specific use cases and continuously monitor for emerging bias as systems evolve. This principle also requires considering the broader societal impact of AI decisions and ensuring that AI systems promote inclusive and equitable outcomes for all stakeholders.`
+            },
+            'privacy': {
+                title: 'Privacy Protection and Data Rights',
+                content: `Privacy in AI governance protects individual and organizational data rights while enabling valuable AI applications. This principle requires implementing privacy-by-design approaches that consider data protection from the earliest stages of AI system development. Organizations must ensure compliance with data protection regulations like GDPR, CCPA, and other relevant privacy laws while maintaining the utility of AI systems. Privacy protection involves techniques such as data minimization, anonymization, differential privacy, and federated learning to reduce privacy risks. Organizations must provide clear consent mechanisms, enable data subject rights, and maintain transparency about data usage in AI systems. This principle also requires regular privacy impact assessments and ongoing monitoring of data handling practices throughout the AI lifecycle.`
+            },
+            'reliability': {
+                title: 'Reliability and Robustness',
+                content: `Reliability ensures that AI systems perform consistently and dependably under various conditions and over time. This principle requires organizations to implement robust testing, validation, and monitoring processes to maintain AI system performance and prevent failures. Reliability involves designing AI systems that can handle edge cases, unexpected inputs, and changing environmental conditions while maintaining acceptable performance levels. Organizations must establish performance benchmarks, implement continuous monitoring systems, and create fallback mechanisms for when AI systems fail. This principle also requires regular model retraining, performance evaluation, and system updates to maintain reliability as conditions change. Reliability extends to ensuring AI systems are available when needed and can recover gracefully from failures or disruptions.`
+            },
+            'human-oversight': {
+                title: 'Human Oversight and Control',
+                content: `Human oversight ensures that meaningful human control is maintained over AI systems, particularly for high-stakes decisions that significantly impact individuals or organizations. This principle requires establishing appropriate levels of human involvement in AI decision-making processes, from fully automated systems with human monitoring to human-in-the-loop systems requiring active human approval. Organizations must define when human intervention is required, establish clear escalation procedures, and ensure that humans have the authority and capability to override AI decisions when necessary. Human oversight also involves training personnel to understand AI system capabilities and limitations, providing tools for effective human-AI collaboration, and maintaining human expertise to validate AI outputs. This principle ensures that AI systems augment rather than replace human judgment in critical decision-making processes.`
+            },
+            'risk-assessment': {
+                title: 'AI Risk Assessment Framework',
+                content: `AI risk assessment provides a systematic approach to identifying, evaluating, and mitigating risks associated with AI system deployment and operation. This framework requires organizations to conduct comprehensive risk analyses that consider technical, ethical, legal, and business risks throughout the AI lifecycle. Risk assessment involves identifying potential failure modes, assessing the likelihood and impact of various risk scenarios, and developing appropriate mitigation strategies. Organizations must consider risks such as model bias, data privacy breaches, system failures, regulatory non-compliance, and reputational damage. The framework should include regular risk reviews, stakeholder input, and updates based on emerging threats and changing business conditions. Effective risk assessment enables informed decision-making about AI deployment and helps organizations prepare for and respond to potential issues before they become critical problems.`
+            },
+            'data-governance': {
+                title: 'Data Governance for AI Systems',
+                content: `Data governance for AI establishes policies, processes, and controls for managing data quality, lineage, and compliance throughout the AI lifecycle. This guideline requires organizations to implement comprehensive data management practices that ensure AI systems have access to high-quality, relevant, and legally compliant data. Data governance involves establishing data quality standards, implementing data lineage tracking, managing data access controls, and ensuring compliance with privacy regulations. Organizations must create processes for data validation, cleaning, and preparation that maintain data integrity while supporting AI model performance. This includes establishing data retention policies, managing data versioning, and implementing secure data sharing mechanisms. Effective data governance also requires ongoing monitoring of data quality and compliance, with clear procedures for addressing data-related issues that could impact AI system performance or regulatory compliance.`
+            },
+            'model-lifecycle': {
+                title: 'AI Model Lifecycle Management',
+                content: `Model lifecycle management provides end-to-end governance for AI models from conception through retirement. This guideline establishes standardized processes for model development, testing, deployment, monitoring, and maintenance that ensure consistent quality and compliance. Model lifecycle management includes defining development standards, implementing version control, establishing testing and validation procedures, and creating deployment approval processes. Organizations must implement continuous monitoring systems that track model performance, detect drift, and trigger retraining when necessary. The lifecycle approach also includes managing model documentation, maintaining audit trails, and planning for model retirement or replacement. Effective lifecycle management ensures that AI models remain accurate, relevant, and compliant throughout their operational life while providing clear governance oversight at each stage of development and deployment.`
+            },
+            'compliance-monitoring': {
+                title: 'Continuous Compliance Monitoring',
+                content: `Compliance monitoring establishes ongoing oversight mechanisms to ensure AI systems adhere to regulatory requirements, industry standards, and organizational policies. This guideline requires implementing automated monitoring systems that continuously assess AI system compliance with relevant regulations such as GDPR, sector-specific requirements, and internal governance policies. Compliance monitoring involves establishing key performance indicators for regulatory adherence, implementing real-time alerting systems for compliance violations, and creating regular reporting mechanisms for stakeholders. Organizations must maintain up-to-date knowledge of evolving regulatory landscapes and adapt monitoring systems accordingly. This includes conducting regular compliance audits, documenting compliance activities, and establishing corrective action procedures for addressing violations. Effective compliance monitoring provides early warning of potential issues and enables proactive responses to maintain regulatory adherence while supporting business objectives.`
+            },
+            'stakeholder-engagement': {
+                title: 'Stakeholder Engagement Strategy',
+                content: `Stakeholder engagement ensures that all relevant parties are involved in AI governance decisions and that diverse perspectives are considered throughout the AI lifecycle. This guideline requires identifying and engaging stakeholders including employees, customers, regulators, community representatives, and subject matter experts in AI governance processes. Stakeholder engagement involves establishing regular communication channels, creating feedback mechanisms, and incorporating stakeholder input into AI system design and governance decisions. Organizations must provide stakeholders with appropriate information about AI systems while respecting confidentiality requirements and competitive considerations. This includes conducting stakeholder impact assessments, facilitating participatory design processes, and maintaining ongoing dialogue about AI system performance and impacts. Effective stakeholder engagement builds trust, improves AI system outcomes, and helps organizations identify and address potential issues before they become significant problems.`
+            },
+            'incident-response': {
+                title: 'AI Incident Response Framework',
+                content: `AI incident response provides a structured approach to identifying, responding to, and learning from AI system failures, ethical violations, or unintended consequences. This guideline establishes clear procedures for detecting AI incidents, assessing their severity and impact, and implementing appropriate response measures. Incident response includes defining incident categories, establishing escalation procedures, and creating response teams with appropriate expertise and authority. Organizations must implement monitoring systems that can detect various types of AI incidents, from technical failures to ethical violations, and provide rapid notification to response teams. The framework should include procedures for containing incidents, investigating root causes, implementing corrective actions, and communicating with affected stakeholders. Effective incident response also includes post-incident analysis to identify lessons learned and improve AI governance processes to prevent similar incidents in the future.`
+            },
+            'nist-framework': {
+                title: 'NIST AI Risk Management Framework',
+                content: `The NIST AI Risk Management Framework provides a comprehensive, voluntary framework for managing AI risks across organizations of all sizes and sectors. This framework establishes a common language and systematic approach for addressing AI risks throughout the AI lifecycle. The NIST framework emphasizes the importance of understanding AI risks in context, implementing appropriate risk management strategies, and maintaining ongoing risk assessment and mitigation efforts. It provides guidance on establishing AI governance structures, implementing risk management processes, and measuring the effectiveness of risk mitigation efforts. The framework is designed to be flexible and adaptable to different organizational contexts while providing consistent principles and practices for AI risk management. Organizations can use the NIST framework to establish baseline AI governance practices, benchmark their current capabilities, and identify areas for improvement in their AI risk management approaches.`
+            },
+            'iso-standards': {
+                title: 'ISO/IEC AI Standards',
+                content: `ISO/IEC standards provide internationally recognized guidelines and requirements for AI system development, deployment, and governance. These standards establish common terminology, principles, and practices for AI governance that enable consistent implementation across organizations and jurisdictions. Key ISO/IEC standards for AI include guidelines for AI system lifecycle processes, risk management, data quality, and ethical considerations. The standards provide detailed requirements for AI system documentation, testing, validation, and monitoring that support regulatory compliance and stakeholder confidence. ISO/IEC standards also address specific aspects of AI governance such as bias mitigation, transparency, and human oversight. Organizations can use these standards to establish credible AI governance programs, demonstrate compliance with international best practices, and facilitate interoperability with partners and customers. The standards are regularly updated to reflect evolving AI technologies and governance practices, providing organizations with current guidance for AI implementation.`
+            },
+            'eu-ai-act': {
+                title: 'European Union AI Act',
+                content: `The EU AI Act represents the world's first comprehensive AI regulation, establishing legal requirements for AI systems based on their risk levels and applications. This regulation creates a risk-based approach that categorizes AI systems as minimal risk, limited risk, high risk, or unacceptable risk, with corresponding compliance requirements. The AI Act requires high-risk AI systems to undergo conformity assessments, maintain detailed documentation, ensure human oversight, and implement risk management systems. Organizations deploying AI systems in the EU must comply with specific requirements for data governance, transparency, accuracy, and robustness. The regulation also establishes obligations for AI system providers, importers, distributors, and users, creating a comprehensive compliance framework. The AI Act includes significant penalties for non-compliance and establishes regulatory oversight mechanisms. Organizations operating in or serving EU markets must understand and implement AI Act requirements to ensure legal compliance and market access.`
+            },
+            'responsible-ai': {
+                title: 'Responsible AI Principles',
+                content: `Responsible AI principles provide industry best practices for developing and deploying AI systems that benefit society while minimizing potential harms. These principles emphasize the importance of considering ethical implications, societal impacts, and stakeholder interests throughout the AI lifecycle. Responsible AI frameworks typically include principles such as fairness, accountability, transparency, and human-centered design that guide AI development and deployment decisions. Organizations implementing responsible AI practices establish governance structures, develop ethical guidelines, and implement processes for assessing and mitigating AI risks and impacts. Responsible AI also involves engaging with diverse stakeholders, conducting impact assessments, and maintaining ongoing monitoring of AI system outcomes. These principles are increasingly being adopted by organizations as voluntary commitments and are being incorporated into regulatory frameworks and industry standards. Responsible AI practices help organizations build trust with stakeholders, reduce risks, and create sustainable value from AI investments.`
+            },
+            'cobit-framework': {
+                title: 'COBIT Framework for AI Governance',
+                content: `COBIT (Control Objectives for Information and Related Technologies) provides a comprehensive framework for IT governance that has been adapted to address AI-specific governance challenges. The COBIT framework for AI establishes governance and management objectives that help organizations align AI initiatives with business strategy, manage AI-related risks, and optimize AI resource utilization. This framework provides detailed guidance on establishing AI governance structures, defining roles and responsibilities, and implementing control mechanisms for AI systems. COBIT for AI addresses key governance domains including strategic alignment, value delivery, risk management, resource management, and performance measurement. The framework includes specific practices for AI system lifecycle management, data governance, and compliance monitoring. Organizations can use COBIT to establish mature AI governance capabilities, assess their current governance maturity, and identify improvement opportunities. The framework provides metrics and assessment tools that enable organizations to measure and improve their AI governance effectiveness over time.`
+            },
+            'industry-specific': {
+                title: 'Industry-Specific AI Governance',
+                content: `Industry-specific AI governance frameworks address the unique regulatory, ethical, and operational requirements of different sectors such as healthcare, financial services, manufacturing, and government. These frameworks build upon general AI governance principles while incorporating sector-specific regulations, standards, and best practices. For example, healthcare AI governance must address patient safety, medical device regulations, and clinical validation requirements, while financial services AI governance must consider consumer protection, fair lending, and systemic risk implications. Industry-specific frameworks provide detailed guidance on compliance requirements, risk assessment approaches, and stakeholder engagement strategies relevant to each sector. They also address unique technical considerations such as safety-critical applications, regulatory approval processes, and industry-specific data requirements. Organizations benefit from industry-specific frameworks by receiving targeted guidance that addresses their particular operational context and regulatory environment. These frameworks often emerge from collaboration between industry associations, regulators, and standards organizations to ensure practical applicability and regulatory alignment.`
+            },
+            'model-registry': {
+                title: 'AI Model Registry Systems',
+                content: `AI model registry systems provide centralized repositories for managing AI models throughout their lifecycle, enabling version control, metadata management, and governance oversight. These systems serve as single sources of truth for AI model information, including model versions, performance metrics, training data lineage, and deployment status. Model registries support governance by providing audit trails, access controls, and approval workflows that ensure only validated models are deployed to production environments. They enable organizations to track model performance over time, manage model dependencies, and facilitate model sharing and reuse across teams. Advanced model registry systems integrate with MLOps pipelines to automate model validation, testing, and deployment processes while maintaining governance controls. These systems also support compliance requirements by maintaining detailed documentation and enabling rapid response to model-related issues. Effective model registry implementation requires establishing clear policies for model naming, versioning, documentation, and lifecycle management that support both operational efficiency and governance objectives.`
+            },
+            'monitoring-platforms': {
+                title: 'AI Monitoring and Observability Platforms',
+                content: `AI monitoring platforms provide real-time visibility into AI system performance, behavior, and impacts, enabling proactive governance and rapid response to issues. These platforms collect and analyze metrics related to model accuracy, fairness, drift, latency, and resource utilization to provide comprehensive insights into AI system health. Monitoring platforms support governance by implementing automated alerting systems that notify stakeholders of performance degradation, bias detection, or compliance violations. They provide dashboards and reporting capabilities that enable stakeholders to understand AI system performance and make informed governance decisions. Advanced monitoring platforms incorporate explainability features that help users understand why AI systems make specific decisions and identify potential issues. These systems also support continuous learning by collecting feedback data that can be used to improve model performance and governance processes. Effective monitoring platform implementation requires establishing appropriate metrics, thresholds, and response procedures that align with organizational governance objectives and stakeholder needs.`
+            },
+            'audit-tools': {
+                title: 'AI Audit and Assessment Tools',
+                content: `AI audit tools provide comprehensive assessment capabilities for evaluating AI system compliance, performance, and governance effectiveness. These tools automate many aspects of AI system auditing, including bias detection, fairness assessment, performance evaluation, and compliance checking against regulatory requirements and organizational policies. Audit tools support governance by providing objective, repeatable assessments that can be used to validate AI system behavior and identify areas for improvement. They often include pre-built assessment frameworks based on industry standards and regulatory requirements, enabling organizations to conduct thorough evaluations without extensive specialized expertise. Advanced audit tools provide detailed reporting capabilities that document assessment results, identify specific issues, and recommend corrective actions. These tools also support ongoing governance by enabling regular audit cycles and tracking improvement progress over time. Effective audit tool implementation requires establishing clear audit criteria, assessment schedules, and response procedures that ensure audit findings are appropriately addressed and governance processes are continuously improved.`
+            },
+            'bias-detection': {
+                title: 'AI Bias Detection and Mitigation Tools',
+                content: `Bias detection tools identify and measure various forms of bias in AI systems, including statistical bias, algorithmic bias, and outcome bias across different demographic groups and use cases. These tools analyze training data, model behavior, and system outcomes to detect discriminatory patterns that could lead to unfair treatment of individuals or groups. Bias detection involves multiple techniques including statistical analysis, fairness metrics evaluation, and counterfactual analysis to identify both obvious and subtle forms of bias. Advanced bias detection tools provide automated scanning capabilities that continuously monitor AI systems for emerging bias as data and conditions change over time. These tools also provide mitigation recommendations and techniques such as data augmentation, algorithmic adjustments, and post-processing corrections to reduce identified bias. Effective bias detection requires understanding the specific fairness requirements and constraints of each use case, as different applications may require different fairness definitions and mitigation approaches. Organizations must integrate bias detection into their AI development and monitoring processes to ensure ongoing fairness and compliance with anti-discrimination requirements.`
+            },
+            'explainability-tools': {
+                title: 'AI Explainability and Interpretability Tools',
+                content: `AI explainability tools make AI system decisions transparent and interpretable by providing insights into how models process inputs and generate outputs. These tools address the "black box" problem of complex AI systems by generating explanations that help users understand model behavior, validate decision-making processes, and identify potential issues. Explainability tools use various techniques including feature importance analysis, decision tree approximations, attention mechanisms, and counterfactual explanations to provide different types of insights into model behavior. They support governance by enabling stakeholders to verify that AI systems are making decisions for appropriate reasons and identifying when models may be relying on inappropriate or biased features. Advanced explainability tools provide different explanation types for different audiences, from technical explanations for data scientists to natural language explanations for end users. These tools also support regulatory compliance by providing documentation of decision-making processes that may be required for audit or legal purposes. Effective explainability implementation requires balancing explanation accuracy, comprehensibility, and computational efficiency while ensuring explanations are actionable and trustworthy.`
+            },
+            'documentation-systems': {
+                title: 'AI Documentation and Reporting Systems',
+                content: `AI documentation systems automate the creation, maintenance, and distribution of governance documentation required for AI system compliance, audit, and stakeholder communication. These systems generate comprehensive documentation including model cards, data sheets, risk assessments, and compliance reports that provide stakeholders with essential information about AI system capabilities, limitations, and governance status. Documentation systems support governance by ensuring consistent, up-to-date documentation that meets regulatory requirements and organizational standards. They integrate with development and deployment pipelines to automatically capture technical metadata, performance metrics, and governance artifacts throughout the AI lifecycle. Advanced documentation systems provide templating capabilities, workflow management, and approval processes that ensure documentation quality and completeness. These systems also support stakeholder communication by generating customized reports and dashboards for different audiences, from technical teams to executive leadership and regulatory bodies. Effective documentation system implementation requires establishing clear documentation standards, automated data collection processes, and regular review procedures that ensure documentation remains accurate and useful for governance decision-making.`
+            }
+        };
+
+        function openModal(contentKey) {
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const content = document.getElementById('modal-content');
+            
+            const data = modalContent[contentKey];
+            title.textContent = data.title;
+            content.textContent = data.content;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
             document.body.style.overflow = 'auto';
         }
 
         // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        }
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
 
-        // Template download functionality
-        function downloadTemplate(templateName) {
-            // Simulate template download
-            const templates = {
-                'ai-ethics-policy': 'AI Ethics Policy Template.pdf',
-                'bias-assessment': 'Bias Assessment Checklist.xlsx',
-                'model-card': 'Model Card Template.docx',
-                'risk-matrix': 'Risk Assessment Matrix.xlsx',
-                'incident-response': 'Incident Response Plan.pdf',
-                'compliance-checklist': 'Compliance Checklist.pdf',
-                'fairness-checklist': 'Fairness Assessment Checklist.xlsx',
-                'transparency-guide': 'Transparency Implementation Guide.pdf',
-                'accountability-matrix': 'RACI Accountability Matrix.xlsx',
-                'privacy-assessment': 'Privacy Impact Assessment.docx',
-                'deployment-checklist': 'Deployment Checklist.pdf',
-                'policy-templates': 'Policy Template Bundle.zip',
-                'monitoring-dashboard': 'Monitoring Dashboard Template.xlsx',
-                'incident-playbook': 'Incident Response Playbook.pdf',
-                'lifecycle-template': 'Lifecycle Management Template.xlsx',
-                'risk-calculator': 'Risk Assessment Calculator.xlsx',
-                'compliance-matrix': 'Global Compliance Matrix.pdf',
-                'documentation-toolkit': 'Documentation Toolkit.zip',
-                'auditing-setup': 'Auditing Tool Setup Guide.pdf',
-                'monitoring-config': 'Monitoring Configuration.json',
-                'bias-testing-suite': 'Bias Testing Suite.zip'
-            };
-
-            const fileName = templates[templateName] || 'Template.pdf';
-            
-            // Create a temporary download link
-            const link = document.createElement('a');
-            link.href = '#'; // In a real implementation, this would be the actual file URL
-            link.download = fileName;
-            link.style.display = 'none';
-            
-            // Show download notification
-            showNotification(`Downloading ${fileName}...`, 'success');
-            
-            // In a real implementation, you would trigger the actual download here
-            console.log(`Downloading template: ${fileName}`);
-        }
-
-        // Assessment functionality
-        function startAssessment() {
-            showNotification('Assessment feature coming soon! This will evaluate your AI governance maturity.', 'info');
-        }
-
-        // Notification system
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm ${
-                type === 'success' ? 'bg-green-500 text-white' :
-                type === 'error' ? 'bg-red-500 text-white' :
-                'bg-blue-500 text-white'
-            }`;
-            notification.innerHTML = `
-                <div class="flex items-center space-x-2">
-                    <span>${type === 'success' ? '✓' : type === 'error' ? '✗' : 'ℹ'}</span>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Auto-remove after 3 seconds
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
-
-        // Progress tracking
-        let completedModules = 0;
-        function updateProgress() {
-            document.getElementById('completedModules').textContent = completedModules;
-            const progressDots = document.querySelectorAll('.flex.space-x-2 .w-3.h-3');
-            progressDots.forEach((dot, index) => {
-                if (index < completedModules) {
-                    dot.className = 'w-3 h-3 bg-blue-500 rounded-full';
-                } else {
-                    dot.className = 'w-3 h-3 bg-gray-300 rounded-full';
-                }
-            });
-        }
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            updateProgress();
-            
-            // Add click handlers for module completion
-            const moduleCards = document.querySelectorAll('.card-hover');
-            moduleCards.forEach((card, index) => {
-                if (index < 4) { // Only for the main module cards
-                    card.addEventListener('click', function() {
-                        if (completedModules <= index) {
-                            completedModules = index + 1;
-                            updateProgress();
-                        }
-                    });
-                }
-            });
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96fb731363f27f60',t:'MTc1NTI4OTgyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96fb9d79f14d0fac',t:'MTc1NTI5MTU2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
