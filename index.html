@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise AI Governance 2025 - Interactive Learning Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease;
+        }
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        .progress-ring-circle {
+            transition: stroke-dasharray 0.35s;
+            transform-origin: 50% 50%;
+        }
+        .icon-bounce {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .template-card {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+            border: 1px solid #cbd5e1;
+        }
+        .template-card:hover {
+            background: linear-gradient(145deg, #e2e8f0, #cbd5e1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-2xl">
+        <div class="container mx-auto px-6 py-8">
+            <div class="text-center">
+                <div class="flex justify-center mb-4">
+                    <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <span class="text-4xl">🎓</span>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Enterprise AI Governance 2025</h1>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto">
+                    Master the principles, frameworks, and tools for responsible AI implementation in modern enterprises
+                </p>
+                <div class="mt-8 flex justify-center space-x-6">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">4</div>
+                        <div class="text-sm opacity-80">Core Modules</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">25+</div>
+                        <div class="text-sm opacity-80">Templates</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">2025</div>
+                        <div class="text-sm opacity-80">Updated Standards</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Indicator -->
+    <div class="bg-white shadow-sm border-b sticky top-0 z-40">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm font-medium text-gray-600">Learning Progress:</span>
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                        <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                    </div>
+                </div>
+                <div class="text-sm text-gray-600">
+                    <span id="completedModules">0</span> of 4 modules completed
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span class="text-blue-600 text-xl">📊</span>
+                </div>
+                <div class="text-2xl font-bold text-gray-900 mb-1">87%</div>
+                <div class="text-sm text-gray-600">Enterprises using AI</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span class="text-green-600 text-xl">⚖️</span>
+                </div>
+                <div class="text-2xl font-bold text-gray-900 mb-1">156</div>
+                <div class="text-sm text-gray-600">AI regulations worldwide</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover">
+                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span class="text-purple-600 text-xl">🛡️</span>
+                </div>
+                <div class="text-2xl font-bold text-gray-900 mb-1">$2.3T</div>
+                <div class="text-sm text-gray-600">AI governance market</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm p-6 text-center card-hover">
+                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span class="text-orange-600 text-xl">🚀</span>
+                </div>
+                <div class="text-2xl font-bold text-gray-900 mb-1">95%</div>
+                <div class="text-sm text-gray-600">Compliance improvement</div>
+            </div>
+        </div>
+
+        <!-- Core Learning Modules -->
+        <section class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Core Learning Modules</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Explore the four essential pillars of enterprise AI governance
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Principles Module -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover" onclick="openModal('principlesModal')">
+                    <div class="flex items-start space-x-4 mb-6">
+                        <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-blue-600 text-2xl">⚖️</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">AI Governance Principles</h3>
+                            <p class="text-gray-600">
+                                Master the foundational principles of fairness, transparency, accountability, and privacy that guide responsible AI development.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-blue-900">Fairness</div>
+                            <div class="text-xs text-blue-700">Bias detection & mitigation</div>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-green-900">Transparency</div>
+                            <div class="text-xs text-green-700">Explainable AI methods</div>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-purple-900">Accountability</div>
+                            <div class="text-xs text-purple-700">Clear responsibility chains</div>
+                        </div>
+                        <div class="bg-orange-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-orange-900">Privacy</div>
+                            <div class="text-xs text-orange-700">GDPR & CCPA compliance</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-500">4 core principles • 8 templates</span>
+                        <div class="flex items-center space-x-2 text-blue-600">
+                            <span class="text-sm font-medium">Explore Module</span>
+                            <span>→</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guidelines Module -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover" onclick="openModal('guidelinesModal')">
+                    <div class="flex items-start space-x-4 mb-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-green-600 text-2xl">📋</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Implementation Guidelines</h3>
+                            <p class="text-gray-600">
+                                Practical step-by-step guidelines for ethical deployment, policy creation, monitoring, and incident response.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-green-900">Ethical Deployment</div>
+                            <div class="text-xs text-green-700">SOPs & checklists</div>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-blue-900">Policy Templates</div>
+                            <div class="text-xs text-blue-700">Ready-to-use policies</div>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-purple-900">Monitoring</div>
+                            <div class="text-xs text-purple-700">Performance tracking</div>
+                        </div>
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-red-900">Incident Response</div>
+                            <div class="text-xs text-red-700">Crisis management</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-500">4 guideline areas • 12 templates</span>
+                        <div class="flex items-center space-x-2 text-green-600">
+                            <span class="text-sm font-medium">Explore Module</span>
+                            <span>→</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks Module -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover" onclick="openModal('frameworksModal')">
+                    <div class="flex items-start space-x-4 mb-6">
+                        <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-purple-600 text-2xl">🏗️</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Governance Frameworks</h3>
+                            <p class="text-gray-600">
+                                Comprehensive frameworks for model lifecycle management, risk assessment, and regulatory compliance across industries.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-purple-900">Lifecycle Management</div>
+                            <div class="text-xs text-purple-700">End-to-end processes</div>
+                        </div>
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-red-900">Risk Assessment</div>
+                            <div class="text-xs text-red-700">Comprehensive evaluation</div>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-blue-900">Compliance</div>
+                            <div class="text-xs text-blue-700">Global regulations</div>
+                        </div>
+                        <div class="bg-yellow-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-yellow-900">Industry Standards</div>
+                            <div class="text-xs text-yellow-700">Sector-specific rules</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-500">3 framework types • 15 templates</span>
+                        <div class="flex items-center space-x-2 text-purple-600">
+                            <span class="text-sm font-medium">Explore Module</span>
+                            <span>→</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools Module -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover" onclick="openModal('toolsModal')">
+                    <div class="flex items-start space-x-4 mb-6">
+                        <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-orange-600 text-2xl">🔧</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Governance Tools</h3>
+                            <p class="text-gray-600">
+                                Practical tools for documentation, auditing, monitoring, bias detection, and explainability implementation.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-orange-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-orange-900">Documentation</div>
+                            <div class="text-xs text-orange-700">Automated logging</div>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-blue-900">Auditing</div>
+                            <div class="text-xs text-blue-700">Decision evaluation</div>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-green-900">Monitoring</div>
+                            <div class="text-xs text-green-700">Real-time dashboards</div>
+                        </div>
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <div class="text-sm font-medium text-red-900">Bias Detection</div>
+                            <div class="text-xs text-red-700">Testing utilities</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-500">5 tool categories • 20+ resources</span>
+                        <div class="flex items-center space-x-2 text-orange-600">
+                            <span class="text-sm font-medium">Explore Module</span>
+                            <span>→</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Templates -->
+        <section class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Quick Access Templates</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Download ready-to-use templates and checklists for immediate implementation
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="template-card rounded-xl p-6 card-hover" onclick="downloadTemplate('ai-ethics-policy')">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <span class="text-blue-600">📜</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">AI Ethics Policy</h4>
+                            <p class="text-sm text-gray-600">Comprehensive policy template</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">PDF • 12 pages</span>
+                        <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">Download</button>
+                    </div>
+                </div>
+
+                <div class="template-card rounded-xl p-6 card-hover" onclick="downloadTemplate('bias-assessment')">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                            <span class="text-red-600">⚖️</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Bias Assessment Checklist</h4>
+                            <p class="text-sm text-gray-600">Pre-deployment testing guide</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">Excel • Interactive</span>
+                        <button class="text-red-600 hover:text-red-800 text-sm font-medium">Download</button>
+                    </div>
+                </div>
+
+                <div class="template-card rounded-xl p-6 card-hover" onclick="downloadTemplate('model-card')">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                            <span class="text-green-600">📊</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Model Card Template</h4>
+                            <p class="text-sm text-gray-600">Standardized documentation</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">Word • Editable</span>
+                        <button class="text-green-600 hover:text-green-800 text-sm font-medium">Download</button>
+                    </div>
+                </div>
+
+                <div class="template-card rounded-xl p-6 card-hover" onclick="downloadTemplate('risk-matrix')">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <span class="text-purple-600">⚠️</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Risk Assessment Matrix</h4>
+                            <p class="text-sm text-gray-600">Interactive risk calculator</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">Excel • Formulas</span>
+                        <button class="text-purple-600 hover:text-purple-800 text-sm font-medium">Download</button>
+                    </div>
+                </div>
+
+                <div class="template-card rounded-xl p-6 card-hover" onclick="downloadTemplate('incident-response')">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                            <span class="text-orange-600">🚨</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Incident Response Plan</h4>
+                            <p class="text-sm text-gray-600">Crisis management workflow</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">PDF • 8 pages</span>
+                        <button class="text-orange-600 hover:text-orange-800 text-sm font-medium">Download</button>
+                    </div>
+                </div>
+
+                <div class="template-card rounded-xl p-6 card-hover" onclick="downloadTemplate('compliance-checklist')">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                            <span class="text-yellow-600">✅</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Compliance Checklist</h4>
+                            <p class="text-sm text-gray-600">GDPR & CCPA requirements</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">PDF • Checklist</span>
+                        <button class="text-yellow-600 hover:text-yellow-800 text-sm font-medium">Download</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Assessment -->
+        <section class="mb-16">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4">AI Governance Readiness Assessment</h2>
+                    <p class="text-xl opacity-90 max-w-2xl mx-auto">
+                        Evaluate your organization's current AI governance maturity and get personalized recommendations
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                        <div class="text-2xl mb-2">📊</div>
+                        <h3 class="font-semibold mb-2">Current State Analysis</h3>
+                        <p class="text-sm opacity-80">Assess your existing governance practices</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                        <div class="text-2xl mb-2">🎯</div>
+                        <h3 class="font-semibold mb-2">Gap Identification</h3>
+                        <p class="text-sm opacity-80">Identify areas for improvement</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                        <div class="text-2xl mb-2">🚀</div>
+                        <h3 class="font-semibold mb-2">Action Plan</h3>
+                        <p class="text-sm opacity-80">Get customized implementation roadmap</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button onclick="startAssessment()" class="bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+                        Start Assessment (15 minutes)
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Principles Modal -->
+    <div id="principlesModal" class="modal">
+        <div class="modal-content">
+            <div class="gradient-bg text-white p-6 rounded-t-2xl">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                            <span class="text-2xl">⚖️</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold">AI Governance Principles</h2>
+                            <p class="opacity-90">Foundational principles for responsible AI</p>
+                        </div>
+                    </div>
+                    <button onclick="closeModal('principlesModal')" class="text-white hover:text-gray-200 text-2xl">&times;</button>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="p-6 bg-blue-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-blue-900 mb-3">🎯 Fairness</h3>
+                        <p class="text-blue-800 mb-4">Ensure AI systems treat all individuals and groups equitably, without discrimination or bias.</p>
+                        <ul class="text-sm text-blue-700 space-y-1">
+                            <li>• Bias detection and mitigation techniques</li>
+                            <li>• Demographic parity assessment</li>
+                            <li>• Equal opportunity testing</li>
+                            <li>• Continuous fairness monitoring</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-green-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-green-900 mb-3">🔍 Transparency</h3>
+                        <p class="text-green-800 mb-4">Make AI decisions interpretable and provide clear explanations for outcomes.</p>
+                        <ul class="text-sm text-green-700 space-y-1">
+                            <li>• Model explainability methods</li>
+                            <li>• Decision audit trails</li>
+                            <li>• Documentation standards</li>
+                            <li>• Stakeholder communication</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-purple-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-purple-900 mb-3">📋 Accountability</h3>
+                        <p class="text-purple-800 mb-4">Establish clear responsibility chains and governance structures for AI systems.</p>
+                        <ul class="text-sm text-purple-700 space-y-1">
+                            <li>• Role and responsibility matrices</li>
+                            <li>• Decision-making hierarchies</li>
+                            <li>• Performance accountability</li>
+                            <li>• Escalation procedures</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-orange-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-orange-900 mb-3">🛡️ Privacy & Security</h3>
+                        <p class="text-orange-800 mb-4">Protect sensitive data and ensure compliance with privacy regulations.</p>
+                        <ul class="text-sm text-orange-700 space-y-1">
+                            <li>• Data minimization strategies</li>
+                            <li>• Encryption and anonymization</li>
+                            <li>• GDPR/CCPA compliance</li>
+                            <li>• Security vulnerability assessment</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">📥 Available Templates & Resources</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <button onclick="downloadTemplate('fairness-checklist')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Fairness Assessment Checklist</div>
+                            <div class="text-sm text-gray-600">Comprehensive bias evaluation framework</div>
+                        </button>
+                        <button onclick="downloadTemplate('transparency-guide')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Transparency Implementation Guide</div>
+                            <div class="text-sm text-gray-600">Step-by-step explainability setup</div>
+                        </button>
+                        <button onclick="downloadTemplate('accountability-matrix')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">RACI Accountability Matrix</div>
+                            <div class="text-sm text-gray-600">Role assignment template</div>
+                        </button>
+                        <button onclick="downloadTemplate('privacy-assessment')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Privacy Impact Assessment</div>
+                            <div class="text-sm text-gray-600">GDPR compliance evaluation</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guidelines Modal -->
+    <div id="guidelinesModal" class="modal">
+        <div class="modal-content">
+            <div class="bg-green-600 text-white p-6 rounded-t-2xl">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                            <span class="text-2xl">📋</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold">Implementation Guidelines</h2>
+                            <p class="opacity-90">Practical steps for AI governance</p>
+                        </div>
+                    </div>
+                    <button onclick="closeModal('guidelinesModal')" class="text-white hover:text-gray-200 text-2xl">&times;</button>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="space-y-6">
+                    <div class="p-6 bg-green-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-green-900 mb-3">🎯 Ethical Deployment</h3>
+                        <p class="text-green-800 mb-4">Standard operating procedures for responsible AI system deployment.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-medium text-green-900 mb-2">Pre-deployment Checklist:</h4>
+                                <ul class="text-sm text-green-700 space-y-1">
+                                    <li>• Ethics board review</li>
+                                    <li>• Bias testing completion</li>
+                                    <li>• Privacy impact assessment</li>
+                                    <li>• Documentation verification</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-green-900 mb-2">Deployment Stages:</h4>
+                                <ul class="text-sm text-green-700 space-y-1">
+                                    <li>• Pilot testing (2-4 weeks)</li>
+                                    <li>• Gradual rollout (4-8 weeks)</li>
+                                    <li>• Full deployment</li>
+                                    <li>• Continuous monitoring</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-blue-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-blue-900 mb-3">📜 Governance Policies</h3>
+                        <p class="text-blue-800 mb-4">Ready-to-use policy templates adaptable to your organization.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-medium text-blue-900 mb-2">Available Policies:</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• AI Ethics Policy</li>
+                                    <li>• Data Governance Policy</li>
+                                    <li>• Model Management Policy</li>
+                                    <li>• Incident Response Policy</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-blue-900 mb-2">Customization Guide:</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• Industry-specific adaptations</li>
+                                    <li>• Regional compliance updates</li>
+                                    <li>• Organizational structure alignment</li>
+                                    <li>• Stakeholder approval process</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-purple-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-purple-900 mb-3">📊 Monitoring & Auditing</h3>
+                        <p class="text-purple-800 mb-4">Comprehensive approaches to tracking model performance and compliance.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <h4 class="font-medium text-purple-900 mb-2">Real-time Monitoring:</h4>
+                                <ul class="text-sm text-purple-700 space-y-1">
+                                    <li>• Performance metrics</li>
+                                    <li>• Bias drift detection</li>
+                                    <li>• Data quality checks</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-purple-900 mb-2">Periodic Auditing:</h4>
+                                <ul class="text-sm text-purple-700 space-y-1">
+                                    <li>• Monthly reviews</li>
+                                    <li>• Quarterly assessments</li>
+                                    <li>• Annual compliance audits</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-purple-900 mb-2">Event-driven:</h4>
+                                <ul class="text-sm text-purple-700 space-y-1">
+                                    <li>• Incident investigations</li>
+                                    <li>• Complaint responses</li>
+                                    <li>• Regulatory inquiries</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-red-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-red-900 mb-3">🚨 Incident Response</h3>
+                        <p class="text-red-800 mb-4">Structured procedures for handling AI-related incidents and compliance failures.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-medium text-red-900 mb-2">Incident Classification:</h4>
+                                <ul class="text-sm text-red-700 space-y-1">
+                                    <li>• Critical (P0): < 1 hour response</li>
+                                    <li>• High (P1): < 4 hours response</li>
+                                    <li>• Medium (P2): < 24 hours response</li>
+                                    <li>• Low (P3): < 72 hours response</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-red-900 mb-2">Response Workflow:</h4>
+                                <ul class="text-sm text-red-700 space-y-1">
+                                    <li>• Detection and alerting</li>
+                                    <li>• Assessment and classification</li>
+                                    <li>• Containment and mitigation</li>
+                                    <li>• Resolution and recovery</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl mt-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">📥 Download Implementation Resources</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <button onclick="downloadTemplate('deployment-checklist')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Deployment Checklist</div>
+                            <div class="text-sm text-gray-600">Complete pre-deployment validation</div>
+                        </button>
+                        <button onclick="downloadTemplate('policy-templates')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Policy Template Bundle</div>
+                            <div class="text-sm text-gray-600">All governance policies in one package</div>
+                        </button>
+                        <button onclick="downloadTemplate('monitoring-dashboard')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Monitoring Dashboard Template</div>
+                            <div class="text-sm text-gray-600">Customizable monitoring interface</div>
+                        </button>
+                        <button onclick="downloadTemplate('incident-playbook')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Incident Response Playbook</div>
+                            <div class="text-sm text-gray-600">Step-by-step crisis management</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Frameworks Modal -->
+    <div id="frameworksModal" class="modal">
+        <div class="modal-content">
+            <div class="bg-purple-600 text-white p-6 rounded-t-2xl">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                            <span class="text-2xl">🏗️</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold">Governance Frameworks</h2>
+                            <p class="opacity-90">Structured approaches to AI governance</p>
+                        </div>
+                    </div>
+                    <button onclick="closeModal('frameworksModal')" class="text-white hover:text-gray-200 text-2xl">&times;</button>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="space-y-6">
+                    <div class="p-6 bg-purple-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-purple-900 mb-3">🔄 Model Lifecycle Management</h3>
+                        <p class="text-purple-800 mb-4">End-to-end framework for managing AI models from conception to retirement.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">1</div>
+                                <h4 class="font-medium text-purple-900">Planning</h4>
+                                <p class="text-xs text-purple-700">Requirements & Design</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">2</div>
+                                <h4 class="font-medium text-purple-900">Development</h4>
+                                <p class="text-xs text-purple-700">Data & Training</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">3</div>
+                                <h4 class="font-medium text-purple-900">Validation</h4>
+                                <p class="text-xs text-purple-700">Testing & Review</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">4</div>
+                                <h4 class="font-medium text-purple-900">Deployment</h4>
+                                <p class="text-xs text-purple-700">Release & Monitor</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2">5</div>
+                                <h4 class="font-medium text-purple-900">Retirement</h4>
+                                <p class="text-xs text-purple-700">Decommission</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-red-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-red-900 mb-3">⚠️ Risk Assessment Framework</h3>
+                        <p class="text-red-800 mb-4">Comprehensive approach to identifying, evaluating, and mitigating AI risks.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <h4 class="font-medium text-red-900 mb-2">Risk Categories:</h4>
+                                <ul class="text-sm text-red-700 space-y-1">
+                                    <li>• Algorithmic bias</li>
+                                    <li>• Privacy violations</li>
+                                    <li>• Security vulnerabilities</li>
+                                    <li>• Operational failures</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-red-900 mb-2">Assessment Matrix:</h4>
+                                <ul class="text-sm text-red-700 space-y-1">
+                                    <li>• Probability evaluation</li>
+                                    <li>• Impact assessment</li>
+                                    <li>• Risk scoring</li>
+                                    <li>• Mitigation planning</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-red-900 mb-2">Monitoring:</h4>
+                                <ul class="text-sm text-red-700 space-y-1">
+                                    <li>• Continuous assessment</li>
+                                    <li>• Risk trend analysis</li>
+                                    <li>• Alert thresholds</li>
+                                    <li>• Escalation procedures</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-blue-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-blue-900 mb-3">📋 Compliance Framework</h3>
+                        <p class="text-blue-800 mb-4">Navigate global regulatory requirements and industry-specific standards.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <h4 class="font-medium text-blue-900 mb-2">🇪🇺 European Union:</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• EU AI Act (2024-2025)</li>
+                                    <li>• GDPR AI Amendments</li>
+                                    <li>• Digital Services Act</li>
+                                    <li>• Sector regulations</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-blue-900 mb-2">🇺🇸 United States:</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• CCPA 2.0 (California)</li>
+                                    <li>• Federal AI Orders</li>
+                                    <li>• NIST AI Framework</li>
+                                    <li>• State-level laws</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-blue-900 mb-2">🌏 Asia-Pacific:</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• Singapore Model AI</li>
+                                    <li>• Japan AI Guidelines</li>
+                                    <li>• Australia Privacy Act</li>
+                                    <li>• China AI Regulations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl mt-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">📥 Framework Implementation Tools</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <button onclick="downloadTemplate('lifecycle-template')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Lifecycle Management Template</div>
+                            <div class="text-sm text-gray-600">Customizable process framework</div>
+                        </button>
+                        <button onclick="downloadTemplate('risk-calculator')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Risk Assessment Calculator</div>
+                            <div class="text-sm text-gray-600">Interactive risk evaluation tool</div>
+                        </button>
+                        <button onclick="downloadTemplate('compliance-matrix')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Global Compliance Matrix</div>
+                            <div class="text-sm text-gray-600">Regional requirement mapping</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tools Modal -->
+    <div id="toolsModal" class="modal">
+        <div class="modal-content">
+            <div class="bg-orange-600 text-white p-6 rounded-t-2xl">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                            <span class="text-2xl">🔧</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold">AI Governance Tools</h2>
+                            <p class="opacity-90">Practical implementation tools</p>
+                        </div>
+                    </div>
+                    <button onclick="closeModal('toolsModal')" class="text-white hover:text-gray-200 text-2xl">&times;</button>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="space-y-6">
+                    <div class="p-6 bg-orange-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-orange-900 mb-3">📝 Documentation Tools</h3>
+                        <p class="text-orange-800 mb-4">Automated tools for creating comprehensive AI system documentation.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-medium text-orange-900 mb-2">Model Cards Generator:</h4>
+                                <ul class="text-sm text-orange-700 space-y-1">
+                                    <li>• Automated documentation</li>
+                                    <li>• Performance metrics</li>
+                                    <li>• Bias assessment results</li>
+                                    <li>• Usage recommendations</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-orange-900 mb-2">Traceability Matrix:</h4>
+                                <ul class="text-sm text-orange-700 space-y-1">
+                                    <li>• Requirement tracking</li>
+                                    <li>• Implementation mapping</li>
+                                    <li>• Test coverage</li>
+                                    <li>• Compliance verification</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-blue-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-blue-900 mb-3">🔍 Auditing Tools</h3>
+                        <p class="text-blue-800 mb-4">Comprehensive platforms for evaluating AI decisions and system performance.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <h4 class="font-medium text-blue-900 mb-2">AI Fairness 360:</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• 70+ fairness metrics</li>
+                                    <li>• Bias mitigation algorithms</li>
+                                    <li>• Interactive visualizations</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-blue-900 mb-2">Fairlearn:</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• Fairness dashboard</li>
+                                    <li>• Mitigation strategies</li>
+                                    <li>• Scikit-learn integration</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-blue-900 mb-2">What-If Tool:</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• Visual model analysis</li>
+                                    <li>• Counterfactual testing</li>
+                                    <li>• Fairness constraints</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-green-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-green-900 mb-3">📊 Monitoring Dashboards</h3>
+                        <p class="text-green-800 mb-4">Real-time compliance tracking and performance monitoring systems.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-medium text-green-900 mb-2">Real-time Monitoring:</h4>
+                                <ul class="text-sm text-green-700 space-y-1">
+                                    <li>• Performance metrics tracking</li>
+                                    <li>• Bias drift detection</li>
+                                    <li>• Data quality monitoring</li>
+                                    <li>• System health checks</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-green-900 mb-2">Alert Configuration:</h4>
+                                <ul class="text-sm text-green-700 space-y-1">
+                                    <li>• Custom threshold settings</li>
+                                    <li>• Multi-channel notifications</li>
+                                    <li>• Escalation procedures</li>
+                                    <li>• Automated responses</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-red-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-red-900 mb-3">⚖️ Bias Detection Utilities</h3>
+                        <p class="text-red-800 mb-4">Specialized tools for testing and mitigating algorithmic bias before deployment.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-medium text-red-900 mb-2">Pre-deployment Testing:</h4>
+                                <ul class="text-sm text-red-700 space-y-1">
+                                    <li>• Statistical parity tests</li>
+                                    <li>• Equal opportunity analysis</li>
+                                    <li>• Demographic parity checks</li>
+                                    <li>• Calibration assessment</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-red-900 mb-2">Interactive Testing:</h4>
+                                <ul class="text-sm text-red-700 space-y-1">
+                                    <li>• Upload test datasets</li>
+                                    <li>• Configure bias metrics</li>
+                                    <li>• Generate detailed reports</li>
+                                    <li>• Mitigation recommendations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-purple-50 rounded-xl">
+                        <h3 class="text-lg font-bold text-purple-900 mb-3">💡 Explainability Libraries</h3>
+                        <p class="text-purple-800 mb-4">Open-source tools for implementing model interpretability and explanation features.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <h4 class="font-medium text-purple-900 mb-2">SHAP:</h4>
+                                <ul class="text-sm text-purple-700 space-y-1">
+                                    <li>• Feature importance</li>
+                                    <li>• Local explanations</li>
+                                    <li>• Visualization tools</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-purple-900 mb-2">LIME:</h4>
+                                <ul class="text-sm text-purple-700 space-y-1">
+                                    <li>• Model-agnostic</li>
+                                    <li>• Individual predictions</li>
+                                    <li>• Text/image support</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-purple-900 mb-2">InterpretML:</h4>
+                                <ul class="text-sm text-purple-700 space-y-1">
+                                    <li>• Glass-box models</li>
+                                    <li>• Global explanations</li>
+                                    <li>• Unified framework</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl mt-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">📥 Tool Implementation Resources</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <button onclick="downloadTemplate('documentation-toolkit')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Documentation Toolkit</div>
+                            <div class="text-sm text-gray-600">Model cards and traceability templates</div>
+                        </button>
+                        <button onclick="downloadTemplate('auditing-setup')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Auditing Tool Setup Guide</div>
+                            <div class="text-sm text-gray-600">Implementation instructions</div>
+                        </button>
+                        <button onclick="downloadTemplate('monitoring-config')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Monitoring Configuration</div>
+                            <div class="text-sm text-gray-600">Dashboard setup templates</div>
+                        </button>
+                        <button onclick="downloadTemplate('bias-testing-suite')" class="text-left p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                            <div class="font-medium text-gray-900">Bias Testing Suite</div>
+                            <div class="text-sm text-gray-600">Complete testing framework</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">AI Governance 2025</h3>
+                    <p class="text-gray-400 text-sm">
+                        Comprehensive learning platform for enterprise AI governance and responsible AI implementation.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Learning Modules</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white">Principles</a></li>
+                        <li><a href="#" class="hover:text-white">Guidelines</a></li>
+                        <li><a href="#" class="hover:text-white">Frameworks</a></li>
+                        <li><a href="#" class="hover:text-white">Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white">Templates</a></li>
+                        <li><a href="#" class="hover:text-white">Checklists</a></li>
+                        <li><a href="#" class="hover:text-white">Case Studies</a></li>
+                        <li><a href="#" class="hover:text-white">Best Practices</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white">Documentation</a></li>
+                        <li><a href="#" class="hover:text-white">Community</a></li>
+                        <li><a href="#" class="hover:text-white">Updates</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 Enterprise AI Governance Learning Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Modal functionality
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Template download functionality
+        function downloadTemplate(templateName) {
+            // Simulate template download
+            const templates = {
+                'ai-ethics-policy': 'AI Ethics Policy Template.pdf',
+                'bias-assessment': 'Bias Assessment Checklist.xlsx',
+                'model-card': 'Model Card Template.docx',
+                'risk-matrix': 'Risk Assessment Matrix.xlsx',
+                'incident-response': 'Incident Response Plan.pdf',
+                'compliance-checklist': 'Compliance Checklist.pdf',
+                'fairness-checklist': 'Fairness Assessment Checklist.xlsx',
+                'transparency-guide': 'Transparency Implementation Guide.pdf',
+                'accountability-matrix': 'RACI Accountability Matrix.xlsx',
+                'privacy-assessment': 'Privacy Impact Assessment.docx',
+                'deployment-checklist': 'Deployment Checklist.pdf',
+                'policy-templates': 'Policy Template Bundle.zip',
+                'monitoring-dashboard': 'Monitoring Dashboard Template.xlsx',
+                'incident-playbook': 'Incident Response Playbook.pdf',
+                'lifecycle-template': 'Lifecycle Management Template.xlsx',
+                'risk-calculator': 'Risk Assessment Calculator.xlsx',
+                'compliance-matrix': 'Global Compliance Matrix.pdf',
+                'documentation-toolkit': 'Documentation Toolkit.zip',
+                'auditing-setup': 'Auditing Tool Setup Guide.pdf',
+                'monitoring-config': 'Monitoring Configuration.json',
+                'bias-testing-suite': 'Bias Testing Suite.zip'
+            };
+
+            const fileName = templates[templateName] || 'Template.pdf';
+            
+            // Create a temporary download link
+            const link = document.createElement('a');
+            link.href = '#'; // In a real implementation, this would be the actual file URL
+            link.download = fileName;
+            link.style.display = 'none';
+            
+            // Show download notification
+            showNotification(`Downloading ${fileName}...`, 'success');
+            
+            // In a real implementation, you would trigger the actual download here
+            console.log(`Downloading template: ${fileName}`);
+        }
+
+        // Assessment functionality
+        function startAssessment() {
+            showNotification('Assessment feature coming soon! This will evaluate your AI governance maturity.', 'info');
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm ${
+                type === 'success' ? 'bg-green-500 text-white' :
+                type === 'error' ? 'bg-red-500 text-white' :
+                'bg-blue-500 text-white'
+            }`;
+            notification.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <span>${type === 'success' ? '✓' : type === 'error' ? '✗' : 'ℹ'}</span>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 3 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Progress tracking
+        let completedModules = 0;
+        function updateProgress() {
+            document.getElementById('completedModules').textContent = completedModules;
+            const progressDots = document.querySelectorAll('.flex.space-x-2 .w-3.h-3');
+            progressDots.forEach((dot, index) => {
+                if (index < completedModules) {
+                    dot.className = 'w-3 h-3 bg-blue-500 rounded-full';
+                } else {
+                    dot.className = 'w-3 h-3 bg-gray-300 rounded-full';
+                }
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            
+            // Add click handlers for module completion
+            const moduleCards = document.querySelectorAll('.card-hover');
+            moduleCards.forEach((card, index) => {
+                if (index < 4) { // Only for the main module cards
+                    card.addEventListener('click', function() {
+                        if (completedModules <= index) {
+                            completedModules = index + 1;
+                            updateProgress();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96fb731363f27f60',t:'MTc1NTI4OTgyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
